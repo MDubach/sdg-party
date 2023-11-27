@@ -6,6 +6,26 @@
     font-family: 'Oswald';
 }
 
+:root{
+    --red: #E5243B;
+    --mustard: #DDA63A;
+    --kellygreen: #4C9F38;
+    --darkred: #C5192D;
+    --redorange: #FF3A21;
+    --bluebright: #26BDE2;
+    --yellow: #FCC30B;
+    --redburgundy: #A21942;
+    --orange: #FD6925;
+    --magenta: #DD1367;
+    --gold: #FD9D24;
+    --darkmustard: #BF8B2E;
+    --greendark: #3F7E44;
+    --blue: #0A97D9;
+    --greenlime: #56C02B;
+    --blueroyal: #00689D;
+    --bluenavy: #19486A;
+}
+
 .foreground-container{
     width: 100%;
     height: 100vh;
@@ -15,18 +35,38 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    backdrop-filter: blur(5px);
 }
 
+/* BTN Player */
 .button-container{
-    text-align: center;
+    display: flex;
+    flex-flow: wrap row;
+    width: 40%;
+    justify-content: left;
+    text-align: left;
+    background-color: white;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+.button-container h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.button-container p{
+    font-size: 20px;
+    margin-bottom: 30px;
 }
 
 .button-container .btn-player{
     font-size: 20px;
-    padding: 10px;
-    border: solid black 1px;
+    padding: 20px;
     border-radius: 10px;
     display: inline-block;
+    margin-right: 20px;
 }
 
 .button-container .btn-player:hover{
@@ -34,6 +74,7 @@
     color: white;
     cursor: pointer;
 }
+/* BTN Player */
 
 .dice-container {
     display: none;
@@ -49,53 +90,12 @@ main {
     place-items: center;
 }
 
-.grid-item {
-    background-color: rgba(255, 60, 60, 0.301);
-    width: 90%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-}
-
-#A6, #B2, #B4, #C5, #D2, #D3, #D5, #E2, #E3, #E4, #F6{
-    background-color: white;
-    color: white;
-}
-
-.playerPoint1 {
-    background-color: red;
+#dice-number {
+    width: 100px;
     aspect-ratio: 1 / 1;
-    width: 50%;
-    border-radius: 100%;
-    display: inline-block;
-}
-
-.playerPoint2 {
-    background-color: blue;
-    aspect-ratio: 1 / 1;
-    width: 50%;
-    border-radius: 100%;
-    display: inline-block;
-}
-
-.playerPoint3 {
-    background-color: green;
-    aspect-ratio: 1 / 1;
-    width: 50%;
-    border-radius: 100%;
-    display: inline-block;
-}
-
-.playerPoint4 {
-    background-color: yellow;
-    aspect-ratio: 1 / 1;
-    height: 50%;
-    border-radius: 100%;
-    display: inline-block;
-}
-
+    margin: 0 auto;
+    font-size:80px;
+  }
 
 #btn-roll-dice {
     background-color: rgb(82, 186, 179);
@@ -106,14 +106,75 @@ main {
     text-transform: uppercase;
     width: 200px;
     cursor: pointer;
-  }
-  
-#dice-number {
-    height: 100px;
-    width: 100px;
-    padding: 50px;
-    margin: 50px auto;
-    border: 1px solid gray;
-    border-radius: 10px;  
-    font-size:80px;
+}
+/* DICE */
+
+main {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    height: 100vh;
+    place-items: center;
+    padding: 2%;
+ 
+}
+
+.grid-item {
+    background-color: rgba(255, 60, 60, 0.301);
+    width: 95%;
+    height: 90%;
+    display: flex;
+    justify-content: left;
+    align-items: end;
+    border-radius: 20px;
+    text-align: center;
+    padding: 15px;
+}
+.grid-item img{
+    max-height: 100px;
+    max-width: 100%;
+    animation: rotation 15s infinite linear;
+}
+#A6, #B2, #B4, #C5, #D2, #D3, #D5, #E2, #E3, #E4, #F6{
+    background-color: white;
+    color: white;
+}
+
+#F6{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playerPoint {
+    aspect-ratio: 1 / 1;
+    width: 50%;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+#player1{
+    background-color: var(--darkred);
+}
+
+#player2{
+    background-color: var(--blueroyal);
+}
+
+#player3{
+    background-color: var(--greenlime);
+}
+
+#player4{
+    background-color: var(--magenta);
+}
+
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
   }
