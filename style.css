@@ -35,6 +35,10 @@
     cursor: pointer;
 }
 
+.dice-container {
+    display: none;
+}
+
 main {
     display: grid;
     /*grid-template-columns: auto auto auto;*/
@@ -85,7 +89,7 @@ main {
 }
 
 .playerPoint4 {
-    background-color: pink;
+    background-color: yellow;
     aspect-ratio: 1 / 1;
     height: 50%;
     border-radius: 100%;

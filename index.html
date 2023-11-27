@@ -14,16 +14,16 @@
   </head>
   <body>
     <div id="foreground-container" class="foreground-container">
-      <div class="button-container">
+      <div id="button-container" class="button-container">
         <h1>Welcome to the Game!</h1>
         <p>Lorem Ipsum</p>
         <button class="btn-player" id="btn-player-2" onclick="startGame(2)">2 Spielende</button>
         <button class="btn-player" id="btn-player-3" onclick="startGame(3)">3 Spielende</button>
         <button class="btn-player" id="btn-player-4" onclick="startGame(4)">4 Spielende</button>
       </div>
-      <div class="dice-container">
+      <div id="dice-container" class="dice-container">
         <p id="dice-number"></p>
-        <button id="btn-roll-dice">Roll Dice</button>
+        <button id="btn-roll-dice" onclick="rollDice()">Roll Dice</button>
       </div>
       <div class="qa-container"></div>
       <div class="scoreboard-container"></div>  
