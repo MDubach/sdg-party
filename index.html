@@ -1,15 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Sedgwick+Ave+Display"  type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SDG-Party</title>
   </head>
   <body>
-
+    <div class="foreground-container">
+      <div class="button-container">
+        <h1>Welcome to the Game!</h1>
+        <p>Lorem Ipsum</p>
+        <button class="btn-player" id="btn-player-2">2 Spielende</button>
+        <button class="btn-player" id="btn-player-3">3 Spielende</button>
+        <button class="btn-player" id="btn-player-4">4 Spielende</button>
+      </div>
+      <div class="dice-container"></div>
+      <div class="qa-container"></div>
+      <div class="scoreboard-container"></div>  
+    </div>
     <main>
         <div id="A1" class="grid-item A 1">A1</div>
         <div id="A2" class="grid-item A 2">A2</div>
@@ -47,10 +61,7 @@
         <div id="F4" class="grid-item F 4">F4</div>
         <div id="F5" class="grid-item F 5">F5</div>  
         <div id="F6" class="grid-item F 6">F6</div>
-
     </main>
-
     <script type="module" src="/javascript.js"></script>
-    
   </body>
 </html>
