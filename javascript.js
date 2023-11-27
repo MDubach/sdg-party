@@ -36,7 +36,7 @@ function generatePlayerPointsAsDiv(playerColor, number) {
 
     var div = document.getElementById("F1");
     newDiv.id = "player" + number;
-    newDiv.className = "playerPoint" + number;
+    newDiv.className = "playerPoint";
     div.appendChild(newDiv);
 }
 
