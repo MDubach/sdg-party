@@ -13,15 +13,54 @@
     <title>SDG-Party</title>
   </head>
   <body>
-    <div class="foreground-container">
+    <div id="foreground-container" class="foreground-container">
       <div class="button-container">
         <h1>Welcome to the Game!</h1>
         <p>Lorem Ipsum</p>
-        <button class="btn-player" id="btn-player-2">2 Spielende</button>
-        <button class="btn-player" id="btn-player-3">3 Spielende</button>
-        <button class="btn-player" id="btn-player-4">4 Spielende</button>
+        <button class="btn-player" id="btn-player-2" onclick="startGame(2)">2 Spielende</button>
+        <button class="btn-player" id="btn-player-3" onclick="startGame(3)">3 Spielende</button>
+        <button class="btn-player" id="btn-player-4" onclick="startGame(4)">4 Spielende</button>
       </div>
-      <div class="dice-container"></div>
+      <div class="dice-container">
+        <h1>Click the dice to roll</h1>
+        <section class="dice-container-c">
+          <div id="cube">
+            <div class="front">
+              <span class="dot dot1"></span>
+            </div>
+            <div class="back">
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>
+            </div>
+            <div class="right">
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>  
+              <span class="dot dot3"></span>
+            </div>
+            <div class="left">
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>  
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+            </div>
+            <div class="top">
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>  
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+              <span class="dot dot5"></span>
+            </div>
+            <div class="bottom">
+              <span class="dot dot1"></span>
+              <span class="dot dot2"></span>  
+              <span class="dot dot3"></span>
+              <span class="dot dot4"></span>
+              <span class="dot dot5"></span>
+              <span class="dot dot6"></span>
+            </div>
+          </div>
+        </section>
+      </div>
       <div class="qa-container"></div>
       <div class="scoreboard-container"></div>  
     </div>
