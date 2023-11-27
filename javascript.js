@@ -56,28 +56,29 @@ console.log(randomValue);
 
 
 
+// dice
 
-/* Dice stuff */
-
-var cube = document.getElementById('cube');
-
-var min = 1;
-var max = 24;
-
-cube.onclick = function() {
-  var xRand = getRandom(max, min);
-  var yRand = getRandom(max, min);
-    
-  cube.style.webkitTransform = 'rotateX('+xRand+'deg) rotateY('+yRand+'deg)';
-  cube.style.transform = 'rotateX('+xRand+'deg) rotateY('+yRand+'deg)';
-}
-
-function getRandom(max, min) {
-  return (Math.floor(Math.random() * (max-min)) + min) * 90;
-}
-
-
-
-
-
-
+var dice = {
+    sides: 6,
+    roll: function () {
+      var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+      return randomNumber;
+    }
+  }
+  
+  
+  
+  //Prints dice roll to the page
+  
+  function printNumber(number) {
+    var placeholder = document.getElementById('dice-number');
+    placeholder.innerHTML = number;
+  }
+  
+  var button = document.getElementById('btn-roll-dice');
+  
+  button.onclick = function() {
+    var result = dice.roll();
+    printNumber(result);
+  };
+  
