@@ -55,6 +55,34 @@ main {
 
 .playerPoint01 {
     background-color: black;
+}
+
+.playerPoint1 {
+    background-color: red;
+    aspect-ratio: 1 / 1;
+    width: 50%;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.playerPoint2 {
+    background-color: blue;
+    aspect-ratio: 1 / 1;
+    width: 50%;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.playerPoint3 {
+    background-color: green;
+    aspect-ratio: 1 / 1;
+    width: 50%;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.playerPoint4 {
+    background-color: pink;
     aspect-ratio: 1 / 1;
     height: 50%;
     border-radius: 100%;
