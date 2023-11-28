@@ -22,7 +22,7 @@
         <button class="btn btn-player" id="btn-player-4" onclick="startGame(4)">4 Spielende</button>
       </div>
       <div id="dice-container" class="dice-container container">
-        <h2>Spieler:in 1 ist dran!</h2>
+        <h2 id="info-player-turn-text">Spieler:in 1 ist dran!</h2>
         <p id="dice-number"></p>
         <button id="btn-roll-dice" class="btn btn-roll-dice" onclick="rollDice()">Roll Dice</button>
       </div>
@@ -34,10 +34,10 @@
       </div>
       <div class="scoreboard-container container">
       </div>
-      <div class="select-direction-container container">
+      <div id="select-direction-container" class="select-direction-container container">
         <h1>Wähle eine Richtung!</h1>
-        <i class="fa-solid fa-arrow-left fa-beat"></i>
-        <i class="fa-solid fa-arrow-right fa-beat"></i>
+        <i id="left-direction-icon" class="fa-solid fa-arrow-left fa-beat"></i>
+        <i id="right-direction-icon" class="fa-solid fa-arrow-right fa-beat"></i>
       </div>
     </div>
     <main>

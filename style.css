@@ -77,7 +77,6 @@ i{
     background-color: white;
     padding: 2%;
     border-radius: 30px;
-    display: none;
 }
 
 .btn-player{
@@ -88,7 +87,6 @@ i{
 
 /* DICE */
 .dice-container {
-    display: flex;
     flex-flow: wrap column;
     width: 15%;
     justify-content: center;
@@ -112,7 +110,6 @@ i{
 /* QA-Container */
 
 .qa-container{
-    display: flex;
     flex-flow: wrap;
     width: 40%;
     justify-content: left;
@@ -133,7 +130,7 @@ i{
 /* Select-Direction */ 
 
 .select-direction-container{
-    display: flex;
+    display: none;
     flex-flow: wrap row;
     width:15%;
     background-color: rgba(255, 255, 255, 0.199);
