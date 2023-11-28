@@ -15,7 +15,7 @@ var players = [
 ];
 
 var sdgArray = [
-    { url: "hello1"},
+    { number: 1, color: "var(--red)", url: "url(../img/E-WEB-Goal-01.png)"},
     { url: "hello2" },
     { url: "hello3" },
     { url: "hello4" }
@@ -88,7 +88,9 @@ function setSdgGoalOnMap() {
     fieldWithSDG = randomField;
 
     var fieldToPlaceSDG = document.getElementById(randomField);
-    fieldToPlaceSDG.style.backgroundColor = "black";
+    console.log(sdgArray[0].color)
+    fieldToPlaceSDG.style.backgroundColor = sdgArray[0].color;
+    fieldToPlaceSDG.style.backgroundImage = sdgArray[0].url;
 
     console.log(randomField);
 }

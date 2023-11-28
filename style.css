@@ -165,6 +165,10 @@ main {
     border-radius: 20px;
     padding: 15px;
 
+    color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top 10px left 50%;
 
     display: flex;
     align-items: end;
@@ -222,11 +226,7 @@ main {
 
 #A1{
     background-color: var(--red);
-    color: white;
     background-image: url(../img/E-WEB-Goal-01.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top 10px left 50%;
 }
 
 @keyframes rotation {
