@@ -16,9 +16,63 @@ var players = [
 ];
 
 var sdgArray = [
-    { number: 1, color: "var(--red)", url: "url(../img/E-WEB-Goal-01.png)"},
-    { number: 2, color: "var(--mustard)", url: "url(../img/E-WEB-Goal-02.png)"},
-    { number: 3, color: "var(--kellygreen)", url: "url(../img/E-WEB-Goal-03.png)"},
+    {   number: 1,
+        color: "var(--red)",
+        url: "url(../img/E-WEB-Goal-01.png)",
+        questions: [
+            {   question: "Question 01",
+                answers: [
+                    { answer: "answer1", result: false },
+                    { answer: "answer2", result: false },
+                    { answer: "answer3", result: true }
+                ]
+            },
+            {   question: "Question 02",
+                answers: [
+                    { answer: "answer1", result: false },
+                    { answer: "answer2", result: false },
+                    { answer: "answer3", result: true }
+                ]
+            },
+            {   question: "Question 03",
+                answers: [
+                    { answer: "answer1", result: false },
+                    { answer: "answer2", result: false },
+                    { answer: "answer3", result: true }
+                ]
+            }
+        ]
+    },
+    {   number: 2,
+        color: "var(--mustard)",
+        url: "url(../img/E-WEB-Goal-02.png)",
+        questions: [
+            {   question: "Question 01",
+                answers: [
+                    { answer: "answer1", result: false },
+                    { answer: "answer2", result: false },
+                    { answer: "answer3", result: true }
+                ]
+            },
+            {   question: "Question 02",
+                answers: [
+                    { answer: "answer1", result: false },
+                    { answer: "answer2", result: false },
+                    { answer: "answer3", result: true }
+                ]
+            },
+            {   question: "Question 03",
+                answers: [
+                    { answer: "answer1", result: false },
+                    { answer: "answer2", result: false },
+                    { answer: "answer3", result: true }
+                ]
+            }
+        ]
+    },
+    {   number: 3,
+        color: "var(--kellygreen)",
+        url: "url(../img/E-WEB-Goal-03.png)"},
     { number: 4, color: "var(--darkred)", url: "url(../img/E-WEB-Goal-04.png)"},
     { number: 5, color: "var(--redorange)", url: "url(../img/E-WEB-Goal-05.png)"},
     { number: 6, color: "var(--bluebright)", url: "url(../img/E-WEB-Goal-06.png)"},
@@ -42,6 +96,7 @@ var qaArray = [
                                                             { answer: "bizi fett", result: false },
                                                             { answer: "dini fetti muetter", result: true }
                                                     ]}
+
 ];
 
 
