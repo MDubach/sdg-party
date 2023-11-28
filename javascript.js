@@ -20,73 +20,537 @@ var sdgArray = [
         color: "var(--red)",
         url: "url(../img/E-WEB-Goal-01.png)",
         questions: [
-            {   question: "Question 01",
+            {
+                question: "Was bedeutet 'Armut'?",
                 answers: [
-                    { answer: "answer1", result: false },
-                    { answer: "answer2", result: false },
-                    { answer: "answer3", result: true }
+                    { answer: "Mangel an Ressourcen", result: true },
+                    { answer: "Überfluss an Wohlstand", result: false },
+                    { answer: "Mangel an Bildung", result: false }
                 ]
             },
-            {   question: "Question 02",
+            {
+                question: "Welche globalen Maßnahmen können die Lebensbedingungen der ärmsten Bevölkerungsgruppen verbessern?",
                 answers: [
-                    { answer: "answer1", result: false },
-                    { answer: "answer2", result: false },
-                    { answer: "answer3", result: true }
+                    { answer: "Steuersenkungen für Reiche", result: false },
+                    { answer: "Erhöhung der Militärausgaben", result: false },
+                    { answer: "Förderung von Bildung und Gesundheitsdiensten", result: true }
                 ]
             },
-            {   question: "Question 03",
+            {
+                question: "Wie könnten innovative Technologien langfristige Lösungen für die Armutskrise schaffen?",
                 answers: [
-                    { answer: "answer1", result: false },
-                    { answer: "answer2", result: false },
-                    { answer: "answer3", result: true }
+                    { answer: "Förderung von Waffenentwicklung", result: false },
+                    { answer: "Steigerung der Produktion von Einwegplastik", result: false },
+                    { answer: "Nutzung erneuerbarer Energien und Technologien", result: true }
                 ]
             }
-        ]
+        ]        
     },
     {   number: 2,
         color: "var(--mustard)",
         url: "url(../img/E-WEB-Goal-02.png)",
         questions: [
-            {   question: "Question 01",
+            {
+                question: "Warum ist es wichtig, den Hunger in der Welt zu beenden?",
                 answers: [
-                    { answer: "answer1", result: false },
-                    { answer: "answer2", result: false },
-                    { answer: "answer3", result: true }
+                    { answer: "Förderung von Luxuslebensmitteln", result: false },
+                    { answer: "Sicherstellung der Ernährungssicherheit", result: true },
+                    { answer: "Erhöhung der Lebensmittelpreise", result: false }
                 ]
             },
-            {   question: "Question 02",
+            {
+                question: "Welche landwirtschaftlichen Praktiken könnten dazu beitragen, die Nahrungsmittelproduktion zu steigern und den Hunger zu reduzieren?",
                 answers: [
-                    { answer: "answer1", result: false },
-                    { answer: "answer2", result: false },
-                    { answer: "answer3", result: true }
+                    { answer: "Einsatz von Gentechnik zur Monopolbildung", result: false },
+                    { answer: "Förderung nachhaltiger Anbaumethoden", result: true },
+                    { answer: "Erhöhung des Pestizideinsatzes", result: false }
                 ]
             },
-            {   question: "Question 03",
+            {
+                question: "Wie könnte die Welt auf eine wachsende Weltbevölkerung reagieren, um sicherzustellen, dass genügend Nahrung für alle vorhanden ist?",
                 answers: [
-                    { answer: "answer1", result: false },
-                    { answer: "answer2", result: false },
-                    { answer: "answer3", result: true }
+                    { answer: "Reduzierung der Lebensmittelproduktion", result: false },
+                    { answer: "Förderung von nachhaltiger Landwirtschaft", result: true },
+                    { answer: "Erhöhung der Lebensmittelverschwendung", result: false }
                 ]
             }
         ]
     },
     {   number: 3,
         color: "var(--kellygreen)",
-        url: "url(../img/E-WEB-Goal-03.png)"},
-    { number: 4, color: "var(--darkred)", url: "url(../img/E-WEB-Goal-04.png)"},
-    { number: 5, color: "var(--redorange)", url: "url(../img/E-WEB-Goal-05.png)"},
-    { number: 6, color: "var(--bluebright)", url: "url(../img/E-WEB-Goal-06.png)"},
-    { number: 7, color: "var(--yellow)", url: "url(../img/E-WEB-Goal-07.png)"},
-    { number: 8, color: "var(--redburgundy)", url: "url(../img/E-WEB-Goal-08.png)"},
-    { number: 9, color: "var(--orange)", url: "url(../img/E-WEB-Goal-09.png)"},
-    { number: 10, color: "var(--magenta)", url: "url(../img/E-WEB-Goal-10.png)"},
-    { number: 11, color: "var(--gold)", url: "url(../img/E-WEB-Goal-11.png)"},
-    { number: 12, color: "var(--darkmustard)", url: "url(../img/E-WEB-Goal-12.png)"},
-    { number: 13, color: "var(--greendark)", url: "url(../img/E-WEB-Goal-13.png)"},
-    { number: 14, color: "var(--blue)", url: "url(../img/E-WEB-Goal-14.png)"},
-    { number: 15, color: "var(--greenlime)", url: "url(../img/E-WEB-Goal-15.png)"},
-    { number: 16, color: "var(--blueroyal)", url: "url(../img/E-WEB-Goal-16.png)"},
-    { number: 17, color: "var(--bluenavy)", url: "url(../img/E-WEB-Goal-17.png)"}
+        url: "url(../img/E-WEB-Goal-03.png)",
+        questions: [
+            {
+                question: "Warum ist es wichtig, sicherzustellen, dass alle Menschen Zugang zu grundlegenden Gesundheitsdiensten haben?",
+                answers: [
+                    { answer: "Förderung von Krankheitsausbreitung", result: false },
+                    { answer: "Verbesserung der Lebensqualität", result: true },
+                    { answer: "Steigerung der Gesundheitskosten", result: false }
+                ]
+            },
+            {
+                question: "Wie können Gesundheitssysteme verbessert werden, um sowohl die Prävention als auch die Behandlung von Krankheiten zu fördern?",
+                answers: [
+                    { answer: "Reduzierung von Impfprogrammen", result: false },
+                    { answer: "Förderung von Bildung über Hygiene", result: true },
+                    { answer: "Erhöhung von Tabakkonsum", result: false }
+                ]
+            },
+            {
+                question: "Wie können kulturelle, sozioökonomische Faktoren die Gesundheit beeinflussen, und wie können Ungleichheiten in diesem Bereich verringert werden?",
+                answers: [
+                    { answer: "Förderung von kulturellen Praktiken, die die Gesundheit gefährden", result: false },
+                    { answer: "Berücksichtigung kultureller Vielfalt bei der Gesundheitsplanung", result: true },
+                    { answer: "Erzwungene Assimilation in der Gesundheitspflege", result: false }
+                ]
+            }
+        ]
+        
+    },
+    {   number: 4,
+        color: "var(--darkred)",
+        url: "url(../img/E-WEB-Goal-04.png)",
+        questions: [
+            {
+                question: "Was bedeutet 'Bildung'?",
+                answers: [
+                    { answer: "Akkumulation von Reichtum", result: false },
+                    { answer: "Vermittlung von Wissen und Fähigkeiten", result: true },
+                    { answer: "Förderung von Konflikten", result: false }
+                ]
+            },
+            {
+                question: "Wie kann der Zugang zu Bildung weltweit verbessert werden?",
+                answers: [
+                    { answer: "Verringerung von Bildungsbudgets", result: false },
+                    { answer: "Förderung von Online-Lernplattformen", result: true },
+                    { answer: "Erhöhung der Schulgebühren", result: false }
+                ]
+            },
+            {
+                question: "Welche Rolle spielt Bildung bei der Förderung von Geschlechtergleichstellung?",
+                answers: [
+                    { answer: "Begrenzung des Bildungszugangs für Frauen", result: false },
+                    { answer: "Stärkung von Frauen durch Bildung", result: true },
+                    { answer: "Frauenförderung durch wirtschaftliche Benachteiligung", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 5,
+        color: "var(--redorange)",
+        url: "url(../img/E-WEB-Goal-05.png)", 
+        questions: [
+            {
+                question: "Was bedeutet 'Geschlechtergleichstellung'?",
+                answers: [
+                    { answer: "Förderung von Geschlechterunterschieden", result: false },
+                    { answer: "Gleichberechtigung der Geschlechter", result: true },
+                    { answer: "Begrenzung der Frauenrechte", result: false }
+                ]
+            },
+            {
+                question: "Welche Maßnahmen könnten dazu beitragen, geschlechtsspezifische Diskriminierung am Arbeitsplatz zu reduzieren?",
+                answers: [
+                    { answer: "Förderung von sexistischen Einstellungen", result: false },
+                    { answer: "Implementierung von geschlechtsspezifischen Gehaltsunterschieden", result: false },
+                    { answer: "Förderung von gleichen Chancen und Gehältern", result: true }
+                ]
+            },
+            {
+                question: "Wie können stereotype Geschlechterrollen in der Gesellschaft überwunden werden?",
+                answers: [
+                    { answer: "Festigung traditioneller Rollenbilder", result: false },
+                    { answer: "Förderung von Vielfalt und Selbstbestimmung", result: true },
+                    { answer: "Einschränkung der Bildungsmöglichkeiten für Mädchen", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 6,
+        color: "var(--bluebright)",
+        url: "url(../img/E-WEB-Goal-06.png)", 
+        questions: [
+            {
+                question: "Was bedeutet 'Sauberes Wasser und Sanitäre Einrichtungen'?",
+                answers: [
+                    { answer: "Förderung von Wasserverschmutzung", result: false },
+                    { answer: "Gewährleistung der Gesundheit und Hygiene", result: true },
+                    { answer: "Einschränkung des Wasserzugangs", result: false }
+                ]
+            },
+            {
+                question: "Wie können Gemeinden den nachhaltigen Wasserverbrauch fördern?",
+                answers: [
+                    { answer: "Verschwendung von Wasserressourcen", result: false },
+                    { answer: "Implementierung von Wasseraufbereitungssystemen", result: true },
+                    { answer: "Förderung von umweltschädlichen Praktiken", result: false }
+                ]
+            },
+            {
+                question: "Wie können Wasserknappheit und Wasserverschmutzung global angegangen werden?",
+                answers: [
+                    { answer: "Ignorierung internationaler Umweltabkommen", result: false },
+                    { answer: "Förderung von nachhaltigen Wassermanagementpraktiken", result: true },
+                    { answer: "Steigerung der industriellen Wasserverschmutzung", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 7,
+        color: "var(--yellow)",
+        url: "url(../img/E-WEB-Goal-07.png)",
+        questions: [
+            {
+                question: "Was bedeutet 'Bezahlbare und saubere Energie'?",
+                answers: [
+                    { answer: "Förderung von fossilen Brennstoffen", result: false },
+                    { answer: "Zugang zu erschwinglichen und umweltfreundlichen Energiequellen", result: true },
+                    { answer: "Beschränkung des Energiezugangs", result: false }
+                ]
+            },
+            {
+                question: "Wie können erneuerbare Energien in großem Maßstab implementiert werden?",
+                answers: [
+                    { answer: "Erhöhung der Nutzung nicht erneuerbarer Energiequellen", result: false },
+                    { answer: "Förderung von Solarenergie, Windkraft und anderen erneuerbaren Quellen", result: true },
+                    { answer: "Begrenzung des Zugangs zu umweltfreundlichen Energien", result: false }
+                ]
+            },
+            {
+                question: "Wie können Energieeffizienz und Nachhaltigkeit in städtischen Gebieten verbessert werden?",
+                answers: [
+                    { answer: "Vernachlässigung städtischer Umweltauswirkungen", result: false },
+                    { answer: "Implementierung von grüner Infrastruktur und Energieeffizienzmaßnahmen", result: true },
+                    { answer: "Förderung von umweltschädlichen Praktiken in Städten", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 8,
+        color: "var(--redburgundy)",
+        url: "url(../img/E-WEB-Goal-08.png)",
+        questions: [
+            
+            {
+                question: "Warum ist 'menschliche Arbeit' wichtig?",
+                answers: [
+                    { answer: "Förderung von Ausbeutung", result: false },
+                    { answer: "Sicherstellung fairer Arbeitsbedingungen und Wirtschaftswachstum", result: true },
+                    { answer: "Begrenzung des Zugangs zu Arbeitsmöglichkeiten", result: false }
+                ]
+            },
+            {
+                question: "Wie können faire Löhne und Arbeitsbedingungen weltweit gefördert werden?",
+                answers: [
+                    { answer: "Senkung von Mindestlöhnen", result: false },
+                    { answer: "Implementierung internationaler Arbeitsstandards", result: true },
+                    { answer: "Förderung von Lohndiskriminierung", result: false }
+                ]
+            },
+            {
+                question: "Wie können kleine Unternehmen und nachhaltige Wirtschaftsmodelle das Wirtschaftswachstum fördern?",
+                answers: [
+                    { answer: "Dominanz von Monopolen und Großunternehmen", result: false },
+                    { answer: "Förderung von kleinen Unternehmen und sozial verantwortlichen Geschäftspraktiken", result: true },
+                    { answer: "Beschränkung des Marktzugangs für kleine Unternehmen", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 9,
+        color: "var(--orange)",
+        url: "url(../img/E-WEB-Goal-09.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Industrie, Innovation und Infrastruktur'?",
+                answers: [
+                    { answer: "Förderung veralteter Technologien", result: false },
+                    { answer: "Entwicklung moderner Technologien und Infrastrukturen", result: true },
+                    { answer: "Beschränkung des technologischen Fortschritts", result: false }
+                ]
+            },
+            {
+                question: "Wie können Innovationen zur nachhaltigen Entwicklung beitragen?",
+                answers: [
+                    { answer: "Begrenzung von Forschung und Entwicklung", result: false },
+                    { answer: "Förderung von kreativen Ideen und umweltfreundlichen Technologien", result: true },
+                    { answer: "Ignorierung von technologischem Fortschritt", result: false }
+                ]
+            },
+            {
+                question: "Wie können Infrastrukturprojekte so gestaltet werden, dass sie umweltverträglich sind?",
+                answers: [
+                    { answer: "Vernachlässigung von Umweltauswirkungen", result: false },
+                    { answer: "Integration von Umweltauflagen und nachhaltigen Baupraktiken", result: true },
+                    { answer: "Förderung von umweltschädlichen Infrastrukturprojekten", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 10,
+        color: "var(--magenta)",
+        url: "url(../img/E-WEB-Goal-10.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Weniger Ungleichheiten'?",
+                answers: [
+                    { answer: "Förderung von sozialen Unterschieden", result: false },
+                    { answer: "Verringerung von Ungleichheiten in Einkommen und Rechten", result: true },
+                    { answer: "Begrenzung des Zugangs zu Chancen", result: false }
+                ]
+            },
+            {
+                question: "Wie können Diskriminierung und Ungleichheiten in verschiedenen Gesellschaften reduziert werden?",
+                answers: [
+                    { answer: "Fortsetzung diskriminierender Gesetze", result: false },
+                    { answer: "Implementierung von Antidiskriminierungsmaßnahmen und rechtlichen Änderungen", result: true },
+                    { answer: "Förderung von Diskriminierung", result: false }
+                ]
+            },
+            {
+                question: "Wie können internationale Handelsabkommen dazu beitragen, globale Ungleichheiten zu verringern?",
+                answers: [
+                    { answer: "Förderung von unfairen Handelspraktiken", result: false },
+                    { answer: "Implementierung fairer Handelsabkommen und Unterstützung benachteiligter Regionen", result: true },
+                    { answer: "Ignorierung internationaler Handelsabkommen", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 11,
+        color: "var(--gold)",
+        url: "url(../img/E-WEB-Goal-11.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Nachhaltige Städte und Gemeinden'?",
+                answers: [
+                    { answer: "Förderung von umweltzerstörenden Bauprojekten", result: false },
+                    { answer: "Entwicklung von Städten, die Umweltauswirkungen minimieren", result: true },
+                    { answer: "Einschränkung des Zugangs zu städtischer Infrastruktur", result: false }
+                ]
+            },
+            {
+                question: "Wie können Städte umweltfreundlicher gestaltet werden, um nachhaltige Entwicklung zu fördern?",
+                answers: [
+                    { answer: "Förderung von umweltbelastenden Industrien in städtischen Gebieten", result: false },
+                    { answer: "Integration von Grünflächen und nachhaltigen Verkehrsmitteln", result: true },
+                    { answer: "Begrenzung des öffentlichen Zugangs zu grünen Bereichen", result: false }
+                ]
+            },
+            {
+                question: "Warum ist die Förderung von nachhaltigen Städten wichtig für die Umwelt und die Lebensqualität der Menschen?",
+                answers: [
+                    { answer: "Förderung von Umweltverschmutzung und übermäßigem Ressourcenverbrauch", result: false },
+                    { answer: "Verbesserung der Luft- und Wasserqualität, Reduzierung von Verkehrsstaus", result: true },
+                    { answer: "Einschränkung des Zugangs zu städtischen Annehmlichkeiten", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 12,
+        color: "var(--darkmustard)",
+        url: "url(../img/E-WEB-Goal-12.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Verantwortungsbewusster Konsum und Produktion'?",
+                answers: [
+                    { answer: "Förderung von verschwenderischem Konsumverhalten", result: false },
+                    { answer: "Nachhaltige Produktion und Konsumgewohnheiten", result: true },
+                    { answer: "Beschränkung des Zugangs zu qualitativ hochwertigen Produkten", result: false }
+                ]
+            },
+            {
+                question: "Wie können Verbraucher dazu beitragen, nachhaltigere Produktions- und Konsumpraktiken zu fördern?",
+                answers: [
+                    { answer: "Fortsetzung von Einweg- und Wegwerfpraktiken", result: false },
+                    { answer: "Unterstützung von Unternehmen mit nachhaltigen Produktionsprozessen", result: true },
+                    { answer: "Förderung von übermäßigem Ressourcenverbrauch", result: false }
+                ]
+            },
+            {
+                question: "Warum ist es wichtig, den ökologischen Fußabdruck zu reduzieren und ressourcenschonende Produkte zu wählen?",
+                answers: [
+                    { answer: "Förderung von Umweltverschmutzung und Ressourcenausbeutung", result: false },
+                    { answer: "Verringerung negativer Umweltauswirkungen und Erhaltung natürlicher Ressourcen", result: true },
+                    { answer: "Einschränkung des Zugangs zu umweltfreundlichen Produkten", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 13, 
+        color: "var(--greendark)",
+        url: "url(../img/E-WEB-Goal-13.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Maßnahmen zum Klimaschutz'?",
+                answers: [
+                    { answer: "Förderung von umweltverschmutzenden Praktiken", result: false },
+                    { answer: "Aktivitäten zur Reduzierung von Treibhausgasemissionen", result: true },
+                    { answer: "Beschränkung des Zugangs zu umweltfreundlichen Technologien", result: false }
+                ]
+            },
+            {
+                question: "Wie können Regierungen und Unternehmen zur Verringerung der Klimaauswirkungen beitragen?",
+                answers: [
+                    { answer: "Förderung von Kohle- und Erdölgewinnung", result: false },
+                    { answer: "Umstellung auf erneuerbare Energien und nachhaltige Praktiken", result: true },
+                    { answer: "Ignorierung von Umweltauflagen", result: false }
+                ]
+            },
+            {
+                question: "Warum ist der Klimawandel eine globale Herausforderung, die koordinierte Anstrengungen erfordert?",
+                answers: [
+                    { answer: "Förderung von umweltschädlichen Praktiken auf nationaler Ebene", result: false },
+                    { answer: "Weil Klimaauswirkungen Grenzen überschreiten und weltweite Kooperation notwendig ist", result: true },
+                    { answer: "Einschränkung internationaler Umweltvereinbarungen", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 14,
+        color: "var(--blue)",
+        url: "url(../img/E-WEB-Goal-14.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Leben unter Wasser'?",
+                answers: [
+                    { answer: "Förderung von Verschmutzung der Meere und Ozeane", result: false },
+                    { answer: "Schutz und nachhaltige Nutzung der Ozeane und Meeresressourcen", result: true },
+                    { answer: "Beschränkung des Zugangs zu Wasserlebewesen", result: false }
+                ]
+            },
+            {
+                question: "Wie können Überfischung und Verschmutzung der Meere reduziert werden?",
+                answers: [
+                    { answer: "Erhöhung von Fangquoten und unregulierte Fischereipraktiken", result: false },
+                    { answer: "Implementierung nachhaltiger Fischereipraktiken und Reduzierung von Plastikverschmutzung", result: true },
+                    { answer: "Förderung von verschmutzenden Meeresaktivitäten", result: false }
+                ]
+            },
+            {
+                question: "Warum ist der Schutz der Meeresumwelt wichtig für das globale Ökosystem?",
+                answers: [
+                    { answer: "Förderung von schädlichen Praktiken in den Ozeanen", result: false },
+                    { answer: "Weil die Ozeane eine Schlüsselrolle im Erhalt der Biodiversität und des Klimas spielen", result: true },
+                    { answer: "Einschränkung des Zugangs zu Meeresressourcen", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 15,
+        color: "var(--greenlime)",
+        url: "url(../img/E-WEB-Goal-15.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Leben an Land'?",
+                answers: [
+                    { answer: "Förderung von Entwaldung und Zerstörung von Ökosystemen", result: false },
+                    { answer: "Schutz, Wiederherstellung und nachhaltige Nutzung von Landökosystemen", result: true },
+                    { answer: "Beschränkung des Zugangs zu Landressourcen", result: false }
+                ]
+            },
+            {
+                question: "Wie können Aufforstungsmaßnahmen und Naturschutzgebiete zur Erhaltung der Biodiversität beitragen?",
+                answers: [
+                    { answer: "Fortsetzung von Entwaldungspraktiken", result: false },
+                    { answer: "Pflanzung von Bäumen und Schaffung von geschützten Lebensräumen", result: true },
+                    { answer: "Förderung von Landdegradation", result: false }
+                ]
+            },
+            {
+                question: "Warum ist der nachhaltige Umgang mit Landressourcen entscheidend für das ökologische Gleichgewicht?",
+                answers: [
+                    { answer: "Förderung von umweltschädlichen Landnutzungspraktiken", result: false },
+                    { answer: "Weil Landökosysteme die Grundlage für das Leben auf der Erde bilden", result: true },
+                    { answer: "Einschränkung des Zugangs zu Land für landwirtschaftliche Zwecke", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 16,
+        color: "var(--blueroyal)",
+        url: "url(../img/E-WEB-Goal-16.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Frieden, Gerechtigkeit und starke Institutionen'?",
+                answers: [
+                    { answer: "Förderung von Konflikten und Schwächung von Institutionen", result: false },
+                    { answer: "Förderung von Frieden, Gerechtigkeit und effektiven Institutionen", result: true },
+                    { answer: "Beschränkung des Zugangs zu Gerechtigkeitssystemen", result: false }
+                ]
+            },
+            {
+                question: "Wie können transparente und gerechte Institutionen zur Verhinderung von Korruption beitragen?",
+                answers: [
+                    { answer: "Förderung und Akzeptanz von korrupten Praktiken", result: false },
+                    { answer: "Implementierung von Transparenzmaßnahmen und unabhängigen Kontrollinstanzen", result: true },
+                    { answer: "Ignorierung von Korruptionsbekämpfung", result: false }
+                ]
+            },
+            {
+                question: "Warum sind starke Institutionen entscheidend für die Förderung von Frieden und Gerechtigkeit?",
+                answers: [
+                    { answer: "Förderung von Schwäche und Instabilität in der Gesellschaft", result: false },
+                    { answer: "Weil sie die Grundlage für gerechte und friedliche Gesellschaften bilden", result: true },
+                    { answer: "Einschränkung des Zugangs zu Rechtssystemen", result: false }
+                ]
+            }
+        ]
+        
+},
+    {   number: 17,
+        color: "var(--bluenavy)",
+        url: "url(../img/E-WEB-Goal-17.png)",
+        questions: [
+            
+            {
+                question: "Was bedeutet 'Partnerschaften zur Erreichung der Ziele'?",
+                answers: [
+                    { answer: "Isolation und mangelnde Zusammenarbeit zwischen Ländern", result: false },
+                    { answer: "Förderung von globaler Zusammenarbeit und Partnerschaften für nachhaltige Entwicklung", result: true },
+                    { answer: "Beschränkung des Zugangs zu internationalen Kooperationen", result: false }
+                ]
+            },
+            {
+                question: "Wie können länderübergreifende Partnerschaften zur Lösung globaler Herausforderungen beitragen?",
+                answers: [
+                    { answer: "Förderung von isolierten nationalen Ansätzen", result: false },
+                    { answer: "Förderung von gemeinsamen Anstrengungen, Ressourcenaustausch und Wissenstransfer", result: true },
+                    { answer: "Einschränkung internationaler Kooperationen", result: false }
+                ]
+            },
+            {
+                question: "Warum ist die Zusammenarbeit zwischen Regierungen, Unternehmen und Zivilgesellschaft entscheidend für die nachhaltige Entwicklung?",
+                answers: [
+                    { answer: "Förderung von Konflikten zwischen verschiedenen Interessengruppen", result: false },
+                    { answer: "Weil sie vielfältige Ressourcen und Perspektiven kombiniert, um wirksame Lösungen zu schaffen", result: true },
+                    { answer: "Einschränkung des Zugangs zu zivilgesellschaftlicher Beteiligung", result: false }
+                ]
+            }
+        ]
+        
+}
 ];
 
 
