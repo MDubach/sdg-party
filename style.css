@@ -224,11 +224,6 @@ main {
     background-color: var(--magenta);
 }
 
-#A1{
-    background-color: var(--red);
-    background-image: url(../img/E-WEB-Goal-01.png);
-}
-
 @keyframes rotation {
     from {
       transform: rotate(0deg);
