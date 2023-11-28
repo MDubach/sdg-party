@@ -1,21 +1,24 @@
 
-var pathBig = ["F1", "F2", "F3", "F4", "F5", "E5", "E6", "D6", "C6", "B6", "B5", "A5", "A4", "A3", "A2", "A1", "B1", "C1", "D1", "E1"];
-var pathMiddle = ["F1", "F2", "F3", "F4", "F5", "E5", "E6", "D6", "C6", "B6", "B5", "A5", "A4", "A3", "B3", "C3", "C2", "C1", "D1", "E1"];
-var pathShort = ["F1", "F2", "F3", "F4", "F5", "E5", "D4", "C4", "C3", "C2", "C1", "D1", "E1"];
+var pathBig = ["F1", "F2", "F3", "F4", "F5", "E5", "E6", "D6", "C6", "B6", "B5", "A5", "A4", "A3", "A2", "A1", "B1", "C1", "D1", "E1", "F1"];
+var pathMiddle = ["F1", "F2", "F3", "F4", "F5", "E5", "E6", "D6", "C6", "B6", "B5", "A5", "A4", "A3", "B3", "C3", "C2", "C1", "D1", "E1", "F1"];
+var pathShort = ["F1", "F2", "F3", "F4", "F5", "E5", "D4", "C4", "C3", "C2", "C1", "D1", "E1", "F1"];
 
 var playerNumber = 2;
 
 var players = [
-    { color: "red", position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "blue", position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "green", position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "yellow", position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 }
+    { color: "red", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
+    { color: "blue", number: 2, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
+    { color: "green", number: 3, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
+    { color: "yellow", number: 4, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 }
 ];
 
 var playerTurnIndex = 0;
 
-
 function startGame(numberOfPlayers) {
+
+    while (players.length > numberOfPlayers) {
+        players.pop();
+    }
 
     // set playerNumber
     playerNumber = numberOfPlayers;
@@ -28,8 +31,6 @@ function startGame(numberOfPlayers) {
     buttonContainer.style.display = "none";
     var diceContainer = document.getElementById("dice-container");
     diceContainer.style.display = "initial";
-
-    // showDice();
 
 }
 
@@ -50,9 +51,6 @@ function generatePlayerPointsAsDiv(number, fieldId) {
     div.appendChild(newDiv);
 }
 
-
-
-
 function getRandomDiceNumber() {
     return Math.floor(Math.random() * 6) + 1;
 }
@@ -61,7 +59,7 @@ var randomValue = getRandomDiceNumber();
 console.log(randomValue);
 
 
-function rollDice() {
+async function rollDice() {
 
     var buttonRollDice = document.getElementById("btn-roll-dice");
     buttonRollDice.style.display = "none";
@@ -76,13 +74,12 @@ function rollDice() {
     
 }
 
-function playerTurn(resultDice) {
+async function playerTurn(resultDice) {
     showPlayboard();
-    movePlayerPoint(resultDice);
-
-
-
-
+    console.log("player turn wait on click");
+    await movePlayerPoint(resultDice);
+    console.log("player turn clicked");
+    setTimeout(showDiceContainer, 1000);
 }
 
 function showPlayboard() {
@@ -90,10 +87,16 @@ function showPlayboard() {
     foregroundContainer.style.display = "none";
 }
 
-function movePlayerPoint(resultDice) {
+function showDiceContainer() {
+    var foregroundContainer = document.getElementById("foreground-container");
+    foregroundContainer.style.display = "initial";
+    var buttonRollDice = document.getElementById("btn-roll-dice");
+    buttonRollDice.style.display = "initial";
+}
+
+async function movePlayerPoint(resultDice) {
 
     var player = players[playerTurnIndex];
-
 
     for (var i = 1; i <= resultDice; i++) {
 
@@ -105,21 +108,25 @@ function movePlayerPoint(resultDice) {
         }
 
         if (playerPosition == "E5" || playerPosition == "A3") {
-            alert("achtung achtung, sie müssen links oder rechts gehen, hahahah huso");
-            // array wechsel
-        }
+            // show foreground auswahl
+            console.log("wait on click");
 
-        // show point on new position
-        setTimeout(dd, 2000);
-        console.log("hello");
+            await waitOnSelectDirection();
+
+            console.log("clicked");
+        }
 
         player.positionInArray++;
         
     }
 
-    console.log(players);
+    movePointByOneField(player);
 
     playerTurnIndex++;
+
+    if (playerTurnIndex >= players.length) {
+        playerTurnIndex = 0;
+    }
 
 }
 
@@ -127,6 +134,28 @@ function checkPlayerPosition() {
     console.log(players[playerTurnIndex].position);
 }
 
-function dd() {
+function movePointByOneField(player) {
 
+    var oldDiv = document.getElementById("player" + player.number);
+    oldDiv.remove();
+
+
+    var newDiv = document.createElement("div");
+
+    var div = document.getElementById(player.choosenPath[player.positionInArray]);
+    newDiv.id = "player" + player.number;
+    newDiv.className = "playerPoint";
+    div.appendChild(newDiv);
 }
+
+
+function waitOnSelectDirection(elementId) {
+    return new Promise(resolve => {
+      document.getElementById(elementId).addEventListener('click', () => {
+        resolve();
+      });
+    });
+}
+  
+
+
