@@ -90,16 +90,6 @@ var sdgArray = [
 ];
 
 
-var qaArray = [
-    { question: "Wie fett isch dis Mami?", answers: [
-                                                            { answer: "sehr fett", result: false },
-                                                            { answer: "bizi fett", result: false },
-                                                            { answer: "dini fetti muetter", result: true }
-                                                    ]}
-
-];
-
-
 var playerTurnIndex = 0;
 var sdgAvailableIndex = 0;
 var sdgAvailableField = "";
@@ -280,7 +270,7 @@ async function showQuestion() {
     var qaContainer = document.getElementById("qa-container");
     qaContainer.style.display = "flex";
     var questionText = document.getElementById("question-text");
-    questionText.innerHTML = qaArray[sdgAvailableIndex].question;
+    questionText.innerHTML = sdgArray[sdgAvailableIndex].questions[0].question;
     await waitOnAnswer();
     if (isAnswerRight) {
         players[playerTurnIndex].sdgCards++;
@@ -324,17 +314,17 @@ function movePointByOneField(player) {
 function waitOnAnswer() {
     return new Promise(resolve => {
       const btnAnswer1 = document.getElementById("btn-answer-1");
-      btnAnswer1.innerHTML = qaArray[sdgAvailableIndex].answers[0].answer;
+      btnAnswer1.innerHTML = sdgArray[sdgAvailableIndex].questions[0].answers[0].answer;
       const btnAnswer2 = document.getElementById("btn-answer-2");
-      btnAnswer2.innerHTML = qaArray[sdgAvailableIndex].answers[1].answer;
+      btnAnswer2.innerHTML = sdgArray[sdgAvailableIndex].questions[0].answers[1].answer;
       const btnAnswer3 = document.getElementById("btn-answer-3");
-      btnAnswer3.innerHTML = qaArray[sdgAvailableIndex].answers[2].answer;
+      btnAnswer3.innerHTML = sdgArray[sdgAvailableIndex].questions[0].answers[2].answer;
   
       const btnAnswer1Func = () => {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
-        isAnswerRight = qaArray[sdgAvailableIndex].answers[0].result;
+        isAnswerRight = sdgArray[sdgAvailableIndex].questions[0].answers[0].result;
 
         resolve();
       };
@@ -343,7 +333,7 @@ function waitOnAnswer() {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
-        isAnswerRight = qaArray[sdgAvailableIndex].answers[1].result;
+        isAnswerRight = sdgArray[sdgAvailableIndex].questions[0].answers[1].result;
 
         resolve();
       };
@@ -352,7 +342,7 @@ function waitOnAnswer() {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
-        isAnswerRight = qaArray[sdgAvailableIndex].answers[2].result;
+        isAnswerRight = sdgArray[sdgAvailableIndex].questions[0].answers[2].result;
 
         resolve();
       };
