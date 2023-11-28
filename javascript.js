@@ -17,9 +17,22 @@ var players = [
 
 var sdgArray = [
     { number: 1, color: "var(--red)", url: "url(../img/E-WEB-Goal-01.png)"},
-    { number: 1, color: "var(--mustard)", url: "url(../img/E-WEB-Goal-01.png)" },
-    { url: "hello3" },
-    { url: "hello4" }
+    { number: 2, color: "var(--mustard)", url: "url(../img/E-WEB-Goal-02.png)"},
+    { number: 3, color: "var(--kellygreen)", url: "url(../img/E-WEB-Goal-03.png)"},
+    { number: 4, color: "var(--darkred)", url: "url(../img/E-WEB-Goal-04.png)"},
+    { number: 5, color: "var(--redorange)", url: "url(../img/E-WEB-Goal-05.png)"},
+    { number: 6, color: "var(--bluebright)", url: "url(../img/E-WEB-Goal-06.png)"},
+    { number: 7, color: "var(--yellow)", url: "url(../img/E-WEB-Goal-07.png)"},
+    { number: 8, color: "var(--redburgundy)", url: "url(../img/E-WEB-Goal-08.png)"},
+    { number: 9, color: "var(--orange)", url: "url(../img/E-WEB-Goal-09.png)"},
+    { number: 10, color: "var(--magenta)", url: "url(../img/E-WEB-Goal-10.png)"},
+    { number: 11, color: "var(--gold)", url: "url(../img/E-WEB-Goal-11.png)"},
+    { number: 12, color: "var(--darkmustard)", url: "url(../img/E-WEB-Goal-12.png)"},
+    { number: 13, color: "var(--greendark)", url: "url(../img/E-WEB-Goal-13.png)"},
+    { number: 14, color: "var(--blue)", url: "url(../img/E-WEB-Goal-14.png)"},
+    { number: 15, color: "var(--greenlime)", url: "url(../img/E-WEB-Goal-15.png)"},
+    { number: 16, color: "var(--blueroyal)", url: "url(../img/E-WEB-Goal-16.png)"},
+    { number: 17, color: "var(--bluenavy)", url: "url(../img/E-WEB-Goal-17.png)"}
 ];
 
 
