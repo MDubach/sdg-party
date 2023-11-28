@@ -6,6 +6,7 @@ var allPossibleFields = ["A1", "A2", "A3", "A4", "A5", "B1", "B3", "B5", "B6", "
 
 var playerNumber = 2;
 var fieldWithSDG = "";
+var isAnswerRight = false;
 
 var players = [
     { color: "red", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
@@ -16,13 +17,24 @@ var players = [
 
 var sdgArray = [
     { number: 1, color: "var(--red)", url: "url(../img/E-WEB-Goal-01.png)"},
-    { url: "hello2" },
+    { number: 1, color: "var(--mustard)", url: "url(../img/E-WEB-Goal-01.png)" },
     { url: "hello3" },
     { url: "hello4" }
 ];
 
+
+var qaArray = [
+    { question: "Wie fett isch dis Mami?", answers: [
+                                                            { answer: "sehr fett", result: false },
+                                                            { answer: "bizi fett", result: false },
+                                                            { answer: "dini fetti muetter", result: true }
+                                                    ]}
+];
+
+
 var playerTurnIndex = 0;
 var sdgAvailableIndex = 0;
+var sdgAvailableField = "";
 
 function startGame(numberOfPlayers) {
 
@@ -83,16 +95,16 @@ function setSdgGoalOnMap() {
     }
 
     let randomIndex = Math.floor(Math.random() * setOnThisFields.length);
-    let randomField = setOnThisFields[randomIndex];
+    sdgAvailableField = setOnThisFields[randomIndex];
 
-    fieldWithSDG = randomField;
+    fieldWithSDG = sdgAvailableField;
 
-    var fieldToPlaceSDG = document.getElementById(randomField);
-    console.log(sdgArray[0].color)
-    fieldToPlaceSDG.style.backgroundColor = sdgArray[0].color;
-    fieldToPlaceSDG.style.backgroundImage = sdgArray[0].url;
+    var fieldToPlaceSDG = document.getElementById(sdgAvailableField);
+    console.log(sdgArray[sdgAvailableIndex].color)
+    fieldToPlaceSDG.style.backgroundColor = sdgArray[sdgAvailableIndex].color;
+    fieldToPlaceSDG.style.backgroundImage = sdgArray[sdgAvailableIndex].url;
 
-    console.log(randomField);
+    console.log(sdgAvailableField);
 }
 
 async function rollDice() {
@@ -177,15 +189,14 @@ async function movePlayerPoint(resultDice) {
 
         player.positionInArray++;
 
+        movePointByOneField(player);
+
+
         if (player.choosenPath[player.positionInArray] == fieldWithSDG) {
-            alert("lutsch eier");
+            await showQuestion();     
         }
         
-    }
-
-    movePointByOneField(player);
-
-    
+    }    
 
     playerTurnIndex++;
 
@@ -193,6 +204,34 @@ async function movePlayerPoint(resultDice) {
         playerTurnIndex = 0;
     }
 
+}
+
+async function showQuestion() {
+    var foregroundContainer = document.getElementById("foreground-container");
+    foregroundContainer.style.display = "flex";
+    var qaContainer = document.getElementById("qa-container");
+    qaContainer.style.display = "flex";
+    var questionText = document.getElementById("question-text");
+    questionText.innerHTML = qaArray[sdgAvailableIndex].question;
+    await waitOnAnswer();
+    if (isAnswerRight) {
+        players[playerTurnIndex].sdgCards++;
+        removeSDGOnMap();
+        sdgAvailableIndex++;
+        setSdgGoalOnMap();
+
+    } else {
+        alert("leider falsch du husssoooo!!! XD");
+    }
+    foregroundContainer.style.display = "none";
+    qaContainer.style.display = "none";
+}
+
+function removeSDGOnMap() {
+    var fieldToRemoveSDG = document.getElementById(sdgAvailableField);
+    console.log(sdgArray[0].color)
+    fieldToRemoveSDG.style.backgroundColor = "";
+    fieldToRemoveSDG.style.backgroundImage = "";
 }
 
 function checkPlayerPosition() {
@@ -212,6 +251,49 @@ function movePointByOneField(player) {
     newDiv.className = "playerPoint";
     div.appendChild(newDiv);
 }
+
+
+function waitOnAnswer() {
+    return new Promise(resolve => {
+      const btnAnswer1 = document.getElementById("btn-answer-1");
+      btnAnswer1.innerHTML = qaArray[sdgAvailableIndex].answers[0].answer;
+      const btnAnswer2 = document.getElementById("btn-answer-2");
+      btnAnswer2.innerHTML = qaArray[sdgAvailableIndex].answers[1].answer;
+      const btnAnswer3 = document.getElementById("btn-answer-3");
+      btnAnswer3.innerHTML = qaArray[sdgAvailableIndex].answers[2].answer;
+  
+      const btnAnswer1Func = () => {
+        btnAnswer1.removeEventListener('click', btnAnswer1Func);
+        btnAnswer2.removeEventListener('click', btnAnswer2Func);
+        btnAnswer3.removeEventListener('click', btnAnswer3Func);
+        isAnswerRight = qaArray[sdgAvailableIndex].answers[0].result;
+
+        resolve();
+      };
+
+      const btnAnswer2Func = () => {
+        btnAnswer1.removeEventListener('click', btnAnswer1Func);
+        btnAnswer2.removeEventListener('click', btnAnswer2Func);
+        btnAnswer3.removeEventListener('click', btnAnswer3Func);
+        isAnswerRight = qaArray[sdgAvailableIndex].answers[1].result;
+
+        resolve();
+      };
+
+      const btnAnswer3Func = () => {
+        btnAnswer1.removeEventListener('click', btnAnswer1Func);
+        btnAnswer2.removeEventListener('click', btnAnswer2Func);
+        btnAnswer3.removeEventListener('click', btnAnswer3Func);
+        isAnswerRight = qaArray[sdgAvailableIndex].answers[2].result;
+
+        resolve();
+      };
+
+      btnAnswer1.addEventListener('click', btnAnswer1Func);
+      btnAnswer2.addEventListener('click', btnAnswer2Func);
+      btnAnswer3.addEventListener('click', btnAnswer3Func);
+    });
+  }
 
 function waitOnSelectDirection(playerPosition, player) {
     return new Promise(resolve => {
