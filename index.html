@@ -14,19 +14,24 @@
   </head>
   <body>
     <div id="foreground-container" class="foreground-container">
-      <div id="button-container" class="button-container">
+      <div id="player-container" class="player-container">
         <h1>Welcome to the Game!</h1>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-        <button class="btn-player" id="btn-player-2" onclick="startGame(2)">2 Spielende</button>
-        <button class="btn-player" id="btn-player-3" onclick="startGame(3)">3 Spielende</button>
-        <button class="btn-player" id="btn-player-4" onclick="startGame(4)">4 Spielende</button>
+        <button class="btn btn-player" id="btn-player-2" onclick="startGame(2)">2 Spielende</button>
+        <button class="btn btn-player" id="btn-player-3" onclick="startGame(3)">3 Spielende</button>
+        <button class="btn btn-player" id="btn-player-4" onclick="startGame(4)">4 Spielende</button>
       </div>
       <div class="dice-container">
         <h2>Spieler:in 1 ist dran!</h2>
         <p id="dice-number"></p>
-        <button id="btn-roll-dice" onclick="rollDice()">Roll Dice</button>
+        <button id="btn-roll-dice" class="btn btn-roll-dice" onclick="rollDice()">Roll Dice</button>
       </div>
-      <div class="qa-container"></div>
+      <div class="qa-container">
+        <h1>Wie heisst Michas Mutter?</h1>
+        <button class="btn btn-answer" id="btn-answer-1" onclick="">Antwort 1</button>
+        <button class="btn btn-answer" id="btn-answer-2" onclick="">Antwort 2</button>
+        <button class="btn btn-answer" id="btn-answer-2" onclick="">Antwort 3</button>
+      </div>
       <div class="scoreboard-container"></div>  
     </div>
     <main>
