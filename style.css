@@ -39,8 +39,36 @@
     backdrop-filter: blur(5px);
 }
 
-/* BTN Player */
-.button-container{
+h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+p{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.btn{
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: black;
+    color: white;
+}
+
+i{
+    cursor: pointer;
+}
+
+/* Player */
+.player-container{
     display: flex;
     flex-flow: wrap row;
     width: 40%;
@@ -49,65 +77,79 @@
     background-color: white;
     padding: 2%;
     border-radius: 30px;
-}
-
-.button-container h1{
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.button-container p{
-    font-size: 20px;
-    margin-bottom: 30px;
-}
-
-.button-container .btn-player{
-    font-size: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.button-container .btn-player:hover{
-    background: black;
-    color: white;
-    cursor: pointer;
-}
-/* BTN Player */
-
-.dice-container {
     display: none;
 }
 
-main {
-    display: grid;
-    /*grid-template-columns: auto auto auto;*/
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    height: 100vh;
+.btn-player{
+    margin-right: 20px;
+}
+/* BTN Player */
+
+
+/* DICE */
+.dice-container {
+    display: flex;
+    flex-flow: wrap column;
+    width: 15%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.199);
     padding: 2%;
-    place-items: center;
+    border-radius: 30px;
+    display: none;
 }
 
 #dice-number {
     width: 100px;
     aspect-ratio: 1 / 1;
-    margin: 0 auto;
+    margin: 20px 0;
     font-size:80px;
   }
 
-#btn-roll-dice {
-    background-color: rgb(82, 186, 179);
-    border-radius: 6px;
-    border: none;
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    text-transform: uppercase;
-    width: 200px;
-    cursor: pointer;
-}
 /* DICE */
+
+/* QA-Container */
+
+.qa-container{
+    display: flex;
+    flex-flow: wrap;
+    width: 40%;
+    justify-content: left;
+    text-align: left;
+    align-items: left;
+    background-color: white;
+    padding: 2%;
+    border-radius: 30px;
+    display: none;
+}
+
+.btn-answer{
+    margin-right: 20px;
+}
+
+/* QA-Container */
+
+/* Select-Direction */ 
+
+.select-direction-container{
+    display: flex;
+    flex-flow: wrap row;
+    width:15%;
+    background-color: rgba(255, 255, 255, 0.199);
+    justify-content: space-around;
+    align-items: center;
+    font-size: 50px;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+.select-direction-container i{
+    margin-top: 30px;
+}
+
+
+/* Select-Direction */
 
 main {
     display: grid;
