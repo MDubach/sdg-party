@@ -118,8 +118,13 @@ i{
     display: none;
 }
 
+.qa-container h1{
+    font-size: 30px;
+}
+
 .btn-answer{
     margin-right: 20px;
+    margin-top: 20px;
 }
 
 /* QA-Container */
