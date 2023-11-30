@@ -33,8 +33,6 @@
         <button class="btn btn-answer" id="btn-answer-2" onclick="">Fränzi</button>
         <button class="btn btn-answer" id="btn-answer-3" onclick="">Dini Mueter</button>
       </div>
-      <div class="scoreboard-container container">
-      </div>
       <div id="select-direction-container" class="select-direction-container container">
         <h1>Wähle eine Richtung!</h1>
         <i id="left-direction-icon" class="fa-solid fa-arrow-left fa-beat"></i>
@@ -42,12 +40,19 @@
       </div>
     </div>
     <main>
-        <div id="A1" class="grid-item A 1"></div>
+        <div id="A1" class="grid-item A 1">A1</div>
         <div id="A2" class="grid-item A 2">A2</div>
-        <div id="A3" class="grid-item A 3">A3</div>  
+        <div id="A3" class="grid-item A 3">
+          <i class="fa-solid fa-arrow-left"></i>
+          <i class="fa-solid fa-arrow-down"></i>
+        </div>  
         <div id="A4" class="grid-item A 4">A4</div>
         <div id="A5" class="grid-item A 5">A5</div>
-        <div id="A6" class="grid-item A 6">A6</div>  
+        <div id="A6" class="grid-item A 6">
+          <div class="reset">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+          </div>
+        </div>  
         <div id="B1" class="grid-item B 1">B1</div>
         <div id="B2" class="grid-item B 2">B2</div>
         <div id="B3" class="grid-item B 3">B3</div>
@@ -61,16 +66,31 @@
         <div id="C5" class="grid-item C 5">C5</div>
         <div id="C6" class="grid-item C 6">C6</div>
         <div id="D1" class="grid-item D 1">D1</div>
-        <div id="D2" class="grid-item D 2">D2</div>
-        <div id="D3" class="grid-item D 3">D3</div>  
+        <div id="D2" class="grid-item D 2">
+          <h4>Player 1</h4>
+          <p>XXX Points</p>
+        </div>
+        <div id="D3" class="grid-item D 3">
+          <h4>Player 2</h4>
+          <p>XXX Points</p>
+        </div>  
         <div id="D4" class="grid-item D 4">D4</div>
         <div id="D5" class="grid-item D 5">D5</div>
         <div id="D6" class="grid-item D 6">D6</div>  
         <div id="E1" class="grid-item E 1">E1</div>
-        <div id="E2" class="grid-item E 2">E2</div>
-        <div id="E3" class="grid-item E 3">E3</div>
+        <div id="E2" class="grid-item E 2">
+          <h4>Player 3</h4>
+          <p>XXX Points</p>
+        </div>
+        <div id="E3" class="grid-item E 3">
+          <h4>Player 4</h4>
+          <p>XXX Points</p>
+        </div>
         <div id="E4" class="grid-item E 4">E4</div>  
-        <div id="E5" class="grid-item E 5">E5</div>
+        <div id="E5" class="grid-item E 5">
+          <i class="fa-solid fa-arrow-up"></i>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
         <div id="E6" class="grid-item E 6">E6</div>
         <div id="F1" class="grid-item F 1">F1</div>  
         <div id="F2" class="grid-item F 2">F2</div>

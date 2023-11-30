@@ -194,9 +194,47 @@ main {
     scale: 1.1;
 }
 
-#A6, #B2, #B4, #C5, #D2, #D3, #D5, #E2, #E3, #E4, #F6{
+#A6{
+    background-color: white;
+    padding: 0;
+    justify-content: right;
+}
+
+#A6 div{
+    width: 50%;
+    background-color: rgb(61, 61, 61);
+    height: 100%;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+#B2, #B4, #C5, #D5, #E4, #F6{
     background-color: white;
     color: white;
+}
+
+#D2, #D3, #E2, #E3{
+    color: white;
+    background-color: rgb(61, 61, 61);
+    justify-content: start;
+    align-items: start;
+    flex-flow: wrap column;
+    text-align: left;
+}
+
+#E2 p, #E3 p, #D2 p, #D3 p{
+    margin: 0;
+    font-size: 16px;
+}
+
+#A3, #E5{
+    color: rgb(61, 61, 61);
+    cursor: default !important;
 }
 
 #F6{
