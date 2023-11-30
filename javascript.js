@@ -645,7 +645,8 @@ async function rollDice() {
 }
 
 function getRandomDiceNumber() {
-    return Math.floor(Math.random() * 6) + 1;
+    return 1000;
+    //return Math.floor(Math.random() * 6) + 1;
 }
 
 
@@ -662,7 +663,6 @@ function showPlayboard() {
     foregroundContainer.style.display = "none";
     var diceContainer = document.getElementById("dice-container");
     diceContainer.style.display = "none";
-
 }
 
 function showDiceContainer() {
@@ -733,20 +733,38 @@ async function showQuestion() {
     foregroundContainer.style.display = "flex";
     var qaContainer = document.getElementById("qa-container");
     qaContainer.style.display = "flex";
-    var questionText = document.getElementById("question-text");
-    questionText.innerHTML = sdgArray[sdgAvailableIndex].questions[0].question;
     await waitOnAnswer();
     if (isAnswerRight) {
         players[playerTurnIndex].sdgCards++;
         removeSDGOnMap();
         sdgAvailableIndex++;
-        setSdgGoalOnMap();
+        if (sdgAvailableIndex < 17) {
+            setSdgGoalOnMap();
+        } else {
+            gameIsOver();
+        }
 
     } else {
         alert("leider falsch du husssoooo!!! XD");
     }
     foregroundContainer.style.display = "none";
     qaContainer.style.display = "none";
+}
+
+function gameIsOver() {
+    // show game is over screen
+    alert("Game isch over ;)");
+
+    checkWhichPlayerWon();
+}
+
+console.log(players);
+
+function checkWhichPlayerWon() {
+    // vergleiche alle punkte uh zeige an wer gewonnen hat
+
+    console.log(players);
+    
 }
 
 function removeSDGOnMap() {
@@ -774,21 +792,36 @@ function movePointByOneField(player) {
     div.appendChild(newDiv);
 }
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+  
+function randomSort(a, b) {
+    return getRandomInt(-1, 1);
+}
 
 function waitOnAnswer() {
+
+    var questionRandomIndex = Math.floor(Math.random() * 3);
+    var answerRandomIndex = [0, 1, 2];
+    answerRandomIndex.sort(randomSort);
+    
+    var questionText = document.getElementById("question-text");
+    questionText.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].question;
+
     return new Promise(resolve => {
       const btnAnswer1 = document.getElementById("btn-answer-1");
-      btnAnswer1.innerHTML = sdgArray[sdgAvailableIndex].questions[0].answers[0].answer;
+      btnAnswer1.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[0]].answer;
       const btnAnswer2 = document.getElementById("btn-answer-2");
-      btnAnswer2.innerHTML = sdgArray[sdgAvailableIndex].questions[0].answers[1].answer;
+      btnAnswer2.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[1]].answer;
       const btnAnswer3 = document.getElementById("btn-answer-3");
-      btnAnswer3.innerHTML = sdgArray[sdgAvailableIndex].questions[0].answers[2].answer;
+      btnAnswer3.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[2]].answer;
   
       const btnAnswer1Func = () => {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
-        isAnswerRight = sdgArray[sdgAvailableIndex].questions[0].answers[0].result;
+        isAnswerRight = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[0]].result;
 
         resolve();
       };
@@ -797,7 +830,7 @@ function waitOnAnswer() {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
-        isAnswerRight = sdgArray[sdgAvailableIndex].questions[0].answers[1].result;
+        isAnswerRight = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[1]].result;
 
         resolve();
       };
@@ -806,7 +839,7 @@ function waitOnAnswer() {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
-        isAnswerRight = sdgArray[sdgAvailableIndex].questions[0].answers[2].result;
+        isAnswerRight = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[2]].result;
 
         resolve();
       };
