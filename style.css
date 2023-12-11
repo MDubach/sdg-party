@@ -165,24 +165,24 @@ main {
     height: 100vh;
     place-items: center;
     padding: 2%;
- 
+    background: var(--greendark) url(img/Schienen.PNG);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .grid-item {
-    background-color: rgba(133, 133, 133, 0.13);
     width: 95%;
     height: 90%;
     border-radius: 20px;
     padding: 15px;
-
     color: white;
+    
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top 10px left 50%;
 
     display: flex;
-    align-items: end;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .grid-item img{
@@ -199,10 +199,9 @@ main {
     scale: 1.1;
 }
 
-#A6{
-    background-color: white;
+#A6, #D2, #D3{
+    justify-content: space-between;
     padding: 0;
-    align-items: center;
 }
 
 #A6 div{
@@ -220,25 +219,34 @@ main {
 }
 
 #A6 div:hover{
-    background: rgba(133, 133, 133, 0.13);
+    background: white;
     color: rgb(61, 61, 61);
 }
 
-#B2, #B4, #C5, #D5, #E4, #F6{
-    background-color: white;
+#B2, #B4, #C5, #D5,#E2, #E3, #E4{
     color: white;
 }
 
-#D2, #D3, #E2, #E3{
+#F6{
+    background-color: white;
+}
+
+ #D2, #D3{
+    padding: 0;
+    justify-content: space-between;
+}
+
+#D2 div, #D3 div{
+    padding: 15px;
+    width: 48%;
+    height: 100%;
     color: white;
     background-color: rgb(61, 61, 61);
-    justify-content: start;
-    align-items: start;
-    flex-flow: wrap column;
-    text-align: left;
+    border-radius: 20px;
+    font-size: 20px;
 }
 
-#E2 p, #E3 p, #D2 p, #D3 p{
+#D2 p, #D3 p{
     margin: 0;
     font-size: 16px;
 }
@@ -247,6 +255,7 @@ main {
     color: rgb(61, 61, 61);
     position: relative;
     font-size: 25px;
+    align-items: ;
 }
 
 #A3 i, #E5 i{
@@ -256,6 +265,7 @@ main {
 #A3 .left{
     top: 50%;
     transform: translateY(-50%);
+    left: 15px;
 }
 
 #A3 .right{
@@ -267,6 +277,7 @@ main {
 #E5 .left{
     transform: rotate(-45deg);
     top: 15px;
+    left: 15px;
 }
 
 #E5 .right{
@@ -281,11 +292,12 @@ main {
 }
 
 .playerPoint {
-    aspect-ratio: 1 / 1 !important;
-    max-height: 60%;
-    width: 20%;
     border-radius: 100%;
-    align-self: flex-start;
+    max-width: 25%;
+    height: 50px;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+    margin: 5px;
 }
 
 #player1{
@@ -303,6 +315,14 @@ main {
 #player4{
     background-color: var(--magenta);
 }
+
+.baeume{
+    height: 100px;
+}
+
+
+
+
 
 @keyframes rotation {
     from {
