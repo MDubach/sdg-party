@@ -662,7 +662,6 @@ function getRandomDiceNumber() {
 async function playerTurn(resultDice) {
     showPlayboard();
     await movePlayerPoint(resultDice);
-    setTimeout(showDiceContainer, 1000);
 }
 
 function showPlayboard() {
