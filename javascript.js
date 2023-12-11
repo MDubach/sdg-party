@@ -8,6 +8,7 @@ var playerNumber = 2;
 var fieldWithSDG = "";
 var isAnswerRight = false;
 var diceNumber = 1;
+var isGameOver = false;
 
 var players = [
     { color: "red", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
@@ -554,6 +555,16 @@ var sdgArray = [
 }
 ];
 
+// get html elements
+var foregroundContainer = document.getElementById("foreground-container");
+var playerContainer = document.getElementById("player-container");
+var buttonRollDice = document.getElementById("btn-roll-dice");
+var diceContainer = document.getElementById("dice-container");
+var dice = document.getElementById("cube-animation");
+var infoPlayerTurnText = document.getElementById("info-player-turn-text");
+var qaContainer = document.getElementById("qa-container");
+var selectDirectionContainer = document.getElementById("select-direction-container");
+var gameoverContainer = document.getElementById("gameover-container");
 
 var playerTurnIndex = 0;
 var sdgAvailableIndex = 0;
@@ -579,11 +590,8 @@ function startGame(numberOfPlayers) {
     setSdgGoalOnMap();
 
     // hide foreground-container
-    var foregroundContainer = document.getElementById("foreground-container");
     foregroundContainer.style.display = "none";
-    var buttonContainer = document.getElementById("player-container");
-    buttonContainer.style.display = "none";
-
+    playerContainer.style.display = "none";
 }
 
 function setAllPlayerPoints() {
@@ -635,8 +643,6 @@ function setSdgGoalOnMap() {
 }
 
 async function rollDice() {
-
-    var buttonRollDice = document.getElementById("btn-roll-dice");
     buttonRollDice.style.display = "none";
 
     var resultDice = getRandomDiceNumber();
@@ -649,8 +655,6 @@ async function rollDice() {
 }
 
 function showDiceAnimation(resultDice) {
-    var dice = document.getElementById("cube-animation");
-    // animation
     dice.className = 'show' + resultDice;
 };
 
@@ -665,20 +669,14 @@ async function playerTurn(resultDice) {
 }
 
 function showPlayboard() {
-    var foregroundContainer = document.getElementById("foreground-container");
     foregroundContainer.style.display = "none";
-    var diceContainer = document.getElementById("dice-container");
     diceContainer.style.display = "none";
 }
 
 function showDiceContainer() {
-    var foregroundContainer = document.getElementById("foreground-container");
     foregroundContainer.style.display = "flex";
-    var diceContainer = document.getElementById("dice-container");
     diceContainer.style.display = "flex";
-    var buttonRollDice = document.getElementById("btn-roll-dice");
     buttonRollDice.style.display = "flex";
-    var infoPlayerTurnText = document.getElementById("info-player-turn-text");
     infoPlayerTurnText.innerHTML = `Spieler:in ${playerTurnIndex + 1} ist dran!`;
 }
 
@@ -696,9 +694,7 @@ async function movePlayerPoint(resultDice) {
         }
 
         if (playerPosition == "E5" || playerPosition == "A3") {
-            var foregroundContainer = document.getElementById("foreground-container");
             foregroundContainer.style.display = "flex";
-            var selectDirectionContainer = document.getElementById("select-direction-container");
             selectDirectionContainer.style.display = "flex";
 
             await waitOnSelectDirection(playerPosition, player);
@@ -727,9 +723,7 @@ async function movePlayerPoint(resultDice) {
 }
 
 async function showQuestion() {
-    var foregroundContainer = document.getElementById("foreground-container");
     foregroundContainer.style.display = "flex";
-    var qaContainer = document.getElementById("qa-container");
     qaContainer.style.display = "flex";
     await waitOnAnswer();
     if (isAnswerRight) {
@@ -741,12 +735,16 @@ async function showQuestion() {
             setSdgGoalOnMap();
         } else {
             gameIsOver();
+            isGameOver = true;
         }
 
     } else {
         alert("leider falsch du husssoooo!!! XD");
     }
-    foregroundContainer.style.display = "none";
+
+    if (!isGameOver) {
+        foregroundContainer.style.display = "none";
+    }
     qaContainer.style.display = "none";
 }
 
@@ -771,25 +769,34 @@ function updatePlayerPoints() {
 
 function gameIsOver() {
     // show game is over screen
-    alert("Game isch over ;)");
-
-    var foregroundContainer = document.getElementById("foreground-container");
     foregroundContainer.style.display = "flex";
-
-    var gameoverContainer = document.getElementById("gameover-container");
     gameoverContainer.style.display = "flex";
-    
-
-
-
     checkWhichPlayerWon();
 }
 
 function checkWhichPlayerWon() {
-    // vergleiche alle punkte uh zeige an wer gewonnen hat
 
-    console.log("deh spieler het gwunne:");
-    console.log(players);
+    var gameoverText = document.getElementById("gameover-text");
+    let playerWithMostSdgCards = players[0];
+    let tiedPlayers = [playerWithMostSdgCards];
+
+
+    for (let i = 1; i < players.length; i++) {
+
+        if (players[i].sdgCards > playerWithMostSdgCards.sdgCards) {
+            playerWithMostSdgCards = players[i];
+            tiedPlayers = [playerWithMostSdgCards];
+        } else if (players[i].sdgCards === playerWithMostSdgCards.sdgCards) {
+            tiedPlayers.push(players[i]);
+        }
+    }
+
+    if (tiedPlayers.length > 1) {
+        gameoverText.innerHTML = `Es gab eine Unentschieden!`;
+    } else {
+        gameoverText.innerHTML = `Spieler:in ${playerWithMostSdgCards.number} hat gewonnen!`;
+    }
+
     
 }
 
