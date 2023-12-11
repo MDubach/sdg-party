@@ -246,17 +246,33 @@ main {
 #A3, #E5{
     color: rgb(61, 61, 61);
     position: relative;
+    font-size: 25px;
 }
 
 #A3 i, #E5 i{
     position: absolute;
-    top: 50%;
-    transform: translatey(-50%);
 }
 
-#A3 .right, #E5 .right{
+#A3 .left{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#A3 .right{
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#E5 .left{
+    transform: rotate(-45deg);
+    top: 15px;
+}
+
+#E5 .right{
+    top: 50%;
     right: 15px;
-    transform: rotate(90deg);
+    transform: translateY(-50%);
 }
 
 #F6{
