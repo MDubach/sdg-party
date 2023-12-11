@@ -24,7 +24,14 @@
       </div>
       <div id="dice-container" class="dice-container container">
         <h2 id="info-player-turn-text">Spieler:in 1 ist dran!</h2>
-        <p id="dice-number"></p>
+        <div id="cube-animation" class="show1">
+          <div class="top-cube"></div>
+          <div class="front-cube"></div>
+          <div class="left-cube"></div>
+          <div class="back-cube"></div>
+          <div class="right-cube"></div>
+          <div class="bottom-cube"></div>
+        </div>
         <button id="btn-roll-dice" class="btn btn-roll-dice" onclick="rollDice()">Roll Dice</button>
       </div>
       <div id="qa-container" class="qa-container container">
@@ -38,6 +45,10 @@
         <i id="left-direction-icon" class="fa-solid fa-arrow-left fa-beat"></i>
         <i id="right-direction-icon" class="fa-solid fa-arrow-right fa-beat"></i>
       </div>
+      <div id="gameover-container" class="gameover-container container">
+        <h1>Du hast gewonnen</h1>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xrXHpxMi_Z8?si=Bwrp93fCfoVvMrDR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     </div>
     <main>
         <div id="A1" class="grid-item A 1">A1</div>
@@ -49,7 +60,7 @@
         <div id="A4" class="grid-item A 4">A4</div>
         <div id="A5" class="grid-item A 5">A5</div>
         <div id="A6" class="grid-item A 6">
-          <div class="reset">
+          <div class="reset" onclick="reloadWebsite()">
             <i class="fa-solid fa-arrow-rotate-left"></i>
           </div>
         </div>  
@@ -68,11 +79,11 @@
         <div id="D1" class="grid-item D 1">D1</div>
         <div id="D2" class="grid-item D 2">
           <h4>Player 1</h4>
-          <p>XXX Points</p>
+          <p id="points-player-1">0 Points</p>
         </div>
         <div id="D3" class="grid-item D 3">
           <h4>Player 2</h4>
-          <p>XXX Points</p>
+          <p id="points-player-2">0 Points</p>
         </div>  
         <div id="D4" class="grid-item D 4">D4</div>
         <div id="D5" class="grid-item D 5">D5</div>
@@ -80,11 +91,11 @@
         <div id="E1" class="grid-item E 1">E1</div>
         <div id="E2" class="grid-item E 2">
           <h4>Player 3</h4>
-          <p>XXX Points</p>
+          <p id="points-player-3">0 Points</p>
         </div>
         <div id="E3" class="grid-item E 3">
           <h4>Player 4</h4>
-          <p>XXX Points</p>
+          <p id="points-player-4">0 Points</p>
         </div>
         <div id="E4" class="grid-item E 4">E4</div>  
         <div id="E5" class="grid-item E 5">

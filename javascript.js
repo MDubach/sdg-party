@@ -7,6 +7,7 @@ var allPossibleFields = ["A1", "A2", "A3", "A4", "A5", "B1", "B3", "B5", "B6", "
 var playerNumber = 2;
 var fieldWithSDG = "";
 var isAnswerRight = false;
+var diceNumber = 1;
 
 var players = [
     { color: "red", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
@@ -558,6 +559,10 @@ var playerTurnIndex = 0;
 var sdgAvailableIndex = 0;
 var sdgAvailableField = "";
 
+function reloadWebsite() {
+    location.reload(true);
+}
+
 function startGame(numberOfPlayers) {
 
     while (players.length > numberOfPlayers) {
@@ -574,10 +579,10 @@ function startGame(numberOfPlayers) {
     setSdgGoalOnMap();
 
     // hide foreground-container
+    var foregroundContainer = document.getElementById("foreground-container");
+    foregroundContainer.style.display = "none";
     var buttonContainer = document.getElementById("player-container");
     buttonContainer.style.display = "none";
-    var diceContainer = document.getElementById("dice-container");
-    diceContainer.style.display = "flex";
 
 }
 
@@ -599,7 +604,7 @@ function generatePlayerPointsAsDiv(number, fieldId) {
 
 function setSdgGoalOnMap() {
 
-    var setOnThisFields = allPossibleFields;
+    var setOnThisFields = Array.from(allPossibleFields);
 
     for (var i = 0; i < playerNumber; i++) {
         var player = players[i];
@@ -622,7 +627,7 @@ function setSdgGoalOnMap() {
     fieldWithSDG = sdgAvailableField;
 
     var fieldToPlaceSDG = document.getElementById(sdgAvailableField);
-    console.log(sdgArray[sdgAvailableIndex].color)
+    console.log(sdgArray[sdgAvailableIndex].color);
     fieldToPlaceSDG.style.backgroundColor = sdgArray[sdgAvailableIndex].color;
     fieldToPlaceSDG.style.backgroundImage = sdgArray[sdgAvailableIndex].url;
 
@@ -635,14 +640,19 @@ async function rollDice() {
     buttonRollDice.style.display = "none";
 
     var resultDice = getRandomDiceNumber();
-    var diceNumber = document.getElementById('dice-number');
-    diceNumber.innerHTML = resultDice;
+    showDiceAnimation(resultDice);
 
     setTimeout(() => {
         playerTurn(resultDice);
     }, 1000);
     
 }
+
+function showDiceAnimation(resultDice) {
+    var dice = document.getElementById("cube-animation");
+    // animation
+    dice.className = 'show' + resultDice;
+};
 
 function getRandomDiceNumber() {
     return Math.floor(Math.random() * 6) + 1;
@@ -651,9 +661,7 @@ function getRandomDiceNumber() {
 
 async function playerTurn(resultDice) {
     showPlayboard();
-    console.log("player turn wait on click");
     await movePlayerPoint(resultDice);
-    console.log("player turn clicked");
     setTimeout(showDiceContainer, 1000);
 }
 
@@ -667,8 +675,6 @@ function showPlayboard() {
 function showDiceContainer() {
     var foregroundContainer = document.getElementById("foreground-container");
     foregroundContainer.style.display = "flex";
-    var buttonRollDice = document.getElementById("dice-number");
-    buttonRollDice.innerHTML = "";
     var diceContainer = document.getElementById("dice-container");
     diceContainer.style.display = "flex";
     var buttonRollDice = document.getElementById("btn-roll-dice");
@@ -691,9 +697,6 @@ async function movePlayerPoint(resultDice) {
         }
 
         if (playerPosition == "E5" || playerPosition == "A3") {
-            // show foreground auswahl
-            console.log("wait on click");
-
             var foregroundContainer = document.getElementById("foreground-container");
             foregroundContainer.style.display = "flex";
             var selectDirectionContainer = document.getElementById("select-direction-container");
@@ -703,9 +706,6 @@ async function movePlayerPoint(resultDice) {
 
             foregroundContainer.style.display = "none";
             selectDirectionContainer.style.display = "none";
-
-            console.log("clicked");
-            console.log(player);
         }
 
         player.positionInArray++;
@@ -736,6 +736,7 @@ async function showQuestion() {
     if (isAnswerRight) {
         players[playerTurnIndex].sdgCards++;
         removeSDGOnMap();
+        updatePlayerPoints();
         sdgAvailableIndex++;
         if (sdgAvailableIndex < 17) {
             setSdgGoalOnMap();
@@ -750,31 +751,53 @@ async function showQuestion() {
     qaContainer.style.display = "none";
 }
 
+function updatePlayerPoints() {
+    var playerPoints1 = document.getElementById("points-player-1");
+    var playerPoints2 = document.getElementById("points-player-2");
+    var playerPoints3 = document.getElementById("points-player-3");
+    var playerPoints4 = document.getElementById("points-player-4");
+
+    for (var i = 0; i < players.length; i++) {
+        if (i == 0) {
+            playerPoints1.innerHTML = `${players[i].sdgCards} Points`;
+        } else if (i == 1) {
+            playerPoints2.innerHTML = `${players[i].sdgCards} Points`;
+        } else if (i == 2) {
+            playerPoints3.innerHTML = `${players[i].sdgCards} Points`;
+        } else {
+            playerPoints4.innerHTML = `${players[i].sdgCards} Points`;
+        }
+    }    
+}
+
 function gameIsOver() {
     // show game is over screen
     alert("Game isch over ;)");
 
+    var foregroundContainer = document.getElementById("foreground-container");
+    foregroundContainer.style.display = "flex";
+
+    var gameoverContainer = document.getElementById("gameover-container");
+    gameoverContainer.style.display = "flex";
+    
+
+
+
     checkWhichPlayerWon();
 }
-
-console.log(players);
 
 function checkWhichPlayerWon() {
     // vergleiche alle punkte uh zeige an wer gewonnen hat
 
+    console.log("deh spieler het gwunne:");
     console.log(players);
     
 }
 
 function removeSDGOnMap() {
     var fieldToRemoveSDG = document.getElementById(sdgAvailableField);
-    console.log(sdgArray[0].color)
     fieldToRemoveSDG.style.backgroundColor = "";
     fieldToRemoveSDG.style.backgroundImage = "";
-}
-
-function checkPlayerPosition() {
-    console.log(players[playerTurnIndex].position);
 }
 
 function movePointByOneField(player) {
