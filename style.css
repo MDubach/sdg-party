@@ -63,6 +63,7 @@ p{
     border-radius: 10px;
     display: inline-block;
     cursor: pointer;
+    text-align: left;
 }
 
 .btn:hover{
@@ -82,6 +83,7 @@ i{
     background-color: white;
     padding: 2%;
     border-radius: 30px;
+    display: flex;
 }
 
 .btn-player{
@@ -129,6 +131,36 @@ i{
 
 /* QA-Container */
 
+/* Gameover */
+
+.gameover-container{
+    display: none;
+    background-color: white;
+    width: 40%;
+    min-height: 150px;
+    padding: 2%;
+}
+
+.gameover-container .reset{
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    transition: .5s;
+    border: solid 1px rgba(0, 0, 0, 0.01);
+}
+
+.gameover-container .reset:hover{
+    cursor: pointer;
+    color:rgba(0, 0, 0, 0.5);
+    background: white;
+    border: solid 1px rgba(0, 0, 0, 0.5)
+}
+
+/* Gameover */
+
 /* Select-Direction */ 
 
 .select-direction-container{
@@ -147,16 +179,6 @@ i{
 
 /* Select-Direction */
 
-/* Scoreboard */
-.scoreboard-container{
-    display: none;
-}
-/* Scoreboard */
-
-
-.gameover-container {
-    display: none;
-}
 
 main {
     display: grid;
@@ -317,7 +339,7 @@ main {
 }
 
 .baeume{
-    height: 100px;
+    width: 100%;
 }
 
 

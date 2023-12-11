@@ -792,7 +792,7 @@ function checkWhichPlayerWon() {
     }
 
     if (tiedPlayers.length > 1) {
-        gameoverText.innerHTML = `Es gab eine Unentschieden!`;
+        gameoverText.innerHTML = `Es gab ein Unentschieden!`;
     } else {
         gameoverText.innerHTML = `Spieler:in ${playerWithMostSdgCards.number} hat gewonnen!`;
     }
