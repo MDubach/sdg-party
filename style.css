@@ -41,9 +41,9 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
-    z-index: 100;
     backdrop-filter: blur(5px);
     border-radius: 0;
+    z-index: 300;
 }
 
 h1{
@@ -94,10 +94,11 @@ i{
 /* DICE */
 .dice-container {
     flex-flow: wrap column;
-    width: 15%;
+    width: 25%;
+    min-width: 250px;
     background-color: rgba(255, 255, 255, 0.199);
     display: none;
-}
+ }
 
 #dice-number {
     width: 100px;
@@ -177,6 +178,11 @@ i{
     font-size: 50px;
 }
 
+#upleft-direction-icon{
+    transform: rotate(45deg);
+}
+
+
 /* Select-Direction */
 
 
@@ -230,7 +236,6 @@ main {
 
 #A6 div{
     width: 48%;
-    background-color: rgb(61, 61, 61);
     height: 100%;
     border-radius: 20px;
     color: white;
@@ -240,6 +245,17 @@ main {
     font-size: 200%;
     cursor: pointer;
     transition: .5s;
+}
+
+.dice{
+    background-color: var(--darkred);
+}
+.dice:hover{
+    background-color: white;
+}
+
+.reset{
+    background-color: rgb(61, 61, 61);
 }
 
 #A6 div:hover{
@@ -277,7 +293,7 @@ main {
 }
 
 .points-player{
-    font-size: 38px !important;
+    font-size: 30px !important;
 }
 
 #A3, #E5{
@@ -337,7 +353,7 @@ main {
     aspect-ratio: 1 / 1;
     align-self: center;
     margin: 5px;
-    z-index: 500;
+    z-index: 200;
 }
 
 #player1, .red{
@@ -376,6 +392,9 @@ main {
     width: 93%;
     aspect-ratio: 1 / 1;
     margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   #cube-animation div {
