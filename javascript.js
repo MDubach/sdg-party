@@ -791,7 +791,7 @@ async function showQuestion() {
         removeSDGOnMap();
         updatePlayerPoints();
         sdgAvailableIndex++;
-        if (sdgAvailableIndex < 1) {
+        if (sdgAvailableIndex < 17) {
             setSdgGoalOnMap();
         } else {
             gameIsOver();
