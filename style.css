@@ -71,6 +71,16 @@ p{
     color: white;
 }
 
+.btn-wrong{
+    background: var(--red);
+}
+
+.btn-wrong:hover{
+    background: var(--red);
+}
+
+
+
 i{
     cursor: pointer;
 }
