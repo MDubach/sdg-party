@@ -278,13 +278,13 @@ main {
 }
 
 #D2 div, #D3 div{
-    padding: 15px;
+    padding: 10px;
     width: 48%;
     height: 100%;
     color: white;
     border-radius: 20px;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
     display: flex;
     flex-flow: wrap column;
