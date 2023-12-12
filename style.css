@@ -187,7 +187,7 @@ main {
     height: 100vh;
     place-items: center;
     padding: 2%;
-    background: var(--greendark) url(img/Schienen.PNG);
+    background: var(--greendark);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -198,6 +198,7 @@ main {
     border-radius: 20px;
     padding: 15px;
     color: white;
+    background-color: rgba(0, 0, 0, 0.1);
     
     background-size: contain;
     background-repeat: no-repeat;
@@ -224,6 +225,7 @@ main {
 #A6, #D2, #D3{
     justify-content: space-between;
     padding: 0;
+    background-color: transparent;
 }
 
 #A6 div{
@@ -247,6 +249,7 @@ main {
 
 #B2, #B4, #C5, #D5,#E2, #E3, #E4{
     color: white;
+    background-color: transparent;
 }
 
 #F6{
@@ -263,7 +266,6 @@ main {
     width: 48%;
     height: 100%;
     color: white;
-    background-color: rgb(61, 61, 61);
     border-radius: 20px;
     font-size: 20px;
 }
@@ -322,19 +324,19 @@ main {
     margin: 5px;
 }
 
-#player1{
+#player1, .red{
     background-color: var(--darkred);
 }
 
-#player2{
+#player2, .blue{
     background-color: var(--blueroyal);
 }
 
-#player3{
+#player3, .green{
     background-color: var(--greenlime);
 }
 
-#player4{
+#player4, .magenta{
     background-color: var(--magenta);
 }
 
