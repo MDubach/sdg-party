@@ -762,7 +762,11 @@ async function movePlayerPoint(resultDice) {
 
 
         if (player.choosenPath[player.positionInArray] == fieldWithSDG) {
-            await showQuestion();     
+            await showQuestion();
+            
+            if (isGameOver) {
+                i = 100;
+            }
         }
         
     }    
@@ -787,7 +791,7 @@ async function showQuestion() {
         removeSDGOnMap();
         updatePlayerPoints();
         sdgAvailableIndex++;
-        if (sdgAvailableIndex < 17) {
+        if (sdgAvailableIndex < 1) {
             setSdgGoalOnMap();
         } else {
             gameIsOver();
@@ -825,6 +829,8 @@ function updatePlayerPoints() {
 
 function gameIsOver() {
     // show game is over screen
+    selectDirectionContainerA3.style.display = "none";
+    selectDirectionContainerE5.style.display = "none";
     foregroundContainer.style.display = "flex";
     gameoverContainer.style.display = "flex";
     checkWhichPlayerWon();
@@ -949,7 +955,6 @@ function waitOnSelectDirection(playerPosition, player) {
       const leftIcon = document.getElementById("left-direction-icon");
       const downIcon = document.getElementById("down-direction-icon");
       
-  
       const selectedNewPath = () => {
         upLeftIcon.removeEventListener('click', selectedNewPath);
         rightIcon.removeEventListener('click', selectedOldPath);
