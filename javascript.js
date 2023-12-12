@@ -14,7 +14,14 @@ var players = [
     { color: "red", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
     { color: "blue", number: 2, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
     { color: "green", number: 3, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "yellow", number: 4, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 }
+    { color: "magenta", number: 4, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 }
+];
+
+var pointsFieldsArray = [
+    { classname: "player-points red", textContent: "Player 1", id: "points-player-1", pointNumber: "0 Points", appendChildId: "D2" },
+    { classname: "player-points blue", textContent: "Player 2", id: "points-player-2", pointNumber: "0 Points", appendChildId: "D2" },
+    { classname: "player-points green", textContent: "Player 3", id: "points-player-3", pointNumber: "0 Points", appendChildId: "D3" },
+    { classname: "player-points magenta", textContent: "Player 4", id: "points-player-4", pointNumber: "0 Points", appendChildId: "D3" }
 ];
 
 var sdgArray = [
@@ -598,6 +605,7 @@ function setAllPlayerPoints() {
 
     for (var i = 1; i <= playerNumber; i++) {
         generatePlayerPointsAsDiv(i, "F1");
+        generatePointsFields(i);
     }
 
 }
@@ -608,6 +616,25 @@ function generatePlayerPointsAsDiv(number, fieldId) {
     newDiv.id = "player" + number;
     newDiv.className = "playerPoint";
     div.appendChild(newDiv);
+}
+
+function generatePointsFields(number) {
+    infosForHtmlElements = pointsFieldsArray[number-1];
+    var divToAppendChild = document.getElementById(infosForHtmlElements.appendChildId);
+    var pointsFieldDiv = document.createElement("div");
+    pointsFieldDiv.className = infosForHtmlElements.classname;
+
+    var playerName = document.createElement("h4");
+    playerName.textContent = infosForHtmlElements.textContent;
+
+    var playerPoints = document.createElement("p");
+    playerPoints.id = infosForHtmlElements.id;
+    playerPoints.textContent = infosForHtmlElements.pointNumber;
+
+    pointsFieldDiv.appendChild(playerName);
+    pointsFieldDiv.appendChild(playerPoints);
+
+    divToAppendChild.appendChild(pointsFieldDiv);
 }
 
 function setSdgGoalOnMap() {
