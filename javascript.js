@@ -18,10 +18,10 @@ var players = [
 ];
 
 var pointsFieldsArray = [
-    { classname: "player-points red", textContent: "Player 1", id: "points-player-1", pointNumber: "0 Points", appendChildId: "D2" },
-    { classname: "player-points blue", textContent: "Player 2", id: "points-player-2", pointNumber: "0 Points", appendChildId: "D2" },
-    { classname: "player-points green", textContent: "Player 3", id: "points-player-3", pointNumber: "0 Points", appendChildId: "D3" },
-    { classname: "player-points magenta", textContent: "Player 4", id: "points-player-4", pointNumber: "0 Points", appendChildId: "D3" }
+    { classNameForDiv: "player-points red", classNameForP: "points-player", textContent: "Spieler:in 1", id: "points-player-1", pointNumber: "0", appendChildId: "D2" },
+    { classNameForDiv: "player-points blue", classNameForP: "points-player", textContent: "Spieler:in 2", id: "points-player-2", pointNumber: "0", appendChildId: "D2" },
+    { classNameForDiv: "player-points green", classNameForP: "points-player", textContent: "Spieler:in 3", id: "points-player-3", pointNumber: "0", appendChildId: "D3" },
+    { classNameForDiv: "player-points magenta", classNameForP: "points-player", textContent: "Spieler:in 4", id: "points-player-4", pointNumber: "0", appendChildId: "D3" }
 ];
 
 var sdgArray = [
@@ -618,21 +618,27 @@ function generatePlayerPointsAsDiv(number, fieldId) {
     div.appendChild(newDiv);
 }
 
+
 function generatePointsFields(number) {
     infosForHtmlElements = pointsFieldsArray[number-1];
     var divToAppendChild = document.getElementById(infosForHtmlElements.appendChildId);
     var pointsFieldDiv = document.createElement("div");
-    pointsFieldDiv.className = infosForHtmlElements.classname;
+    pointsFieldDiv.className = infosForHtmlElements.classNameForDiv;
 
     var playerName = document.createElement("h4");
     playerName.textContent = infosForHtmlElements.textContent;
 
     var playerPoints = document.createElement("p");
     playerPoints.id = infosForHtmlElements.id;
+    playerPoints.className = infosForHtmlElements.classNameForP;
     playerPoints.textContent = infosForHtmlElements.pointNumber;
+
+    var pointsText = document.createElement("h5");
+    pointsText.textContent = "Punkte";
 
     pointsFieldDiv.appendChild(playerName);
     pointsFieldDiv.appendChild(playerPoints);
+    pointsFieldDiv.appendChild(pointsText);
 
     divToAppendChild.appendChild(pointsFieldDiv);
 }
@@ -728,7 +734,18 @@ async function movePlayerPoint(resultDice) {
             player.positionInArray = 0;
         }
 
-        if (playerPosition == "E5" || playerPosition == "A3") {
+        if (playerPosition == "E5") {
+            foregroundContainer.style.display = "flex";
+            selectDirectionContainer.style.display = "flex";
+
+            await waitOnSelectDirection(playerPosition, player);
+
+            foregroundContainer.style.display = "none";
+            selectDirectionContainer.style.display = "none";
+            
+        }
+
+        if (playerPosition == "A3") {
             foregroundContainer.style.display = "flex";
             selectDirectionContainer.style.display = "flex";
 
