@@ -666,6 +666,14 @@ function setSdgGoalOnMap() {
     fieldToPlaceSDG.style.backgroundColor = sdgArray[sdgAvailableIndex].color;
     fieldToPlaceSDG.style.backgroundImage = sdgArray[sdgAvailableIndex].url;
 
+    var divChangeArrowLook = document.getElementById(sdgAvailableField);
+    var iElements = divChangeArrowLook.querySelectorAll('i');
+
+    iElements.forEach(function (iElement) {
+        iElement.style.color = 'transparent';
+    });
+    console.log(divChangeArrowLook);
+
     console.log(sdgAvailableField);
 }
 
@@ -831,6 +839,13 @@ function removeSDGOnMap() {
     var fieldToRemoveSDG = document.getElementById(sdgAvailableField);
     fieldToRemoveSDG.style.backgroundColor = "";
     fieldToRemoveSDG.style.backgroundImage = "";
+
+    var divChangeArrowLook = document.getElementById(sdgAvailableField);
+    var iElements = divChangeArrowLook.querySelectorAll('i');
+
+    iElements.forEach(function (iElement) {
+        iElement.style.color = 'var(--greendark)';
+    });
 }
 
 function movePointByOneField(player) {
@@ -936,3 +951,7 @@ function waitOnSelectDirection(playerPosition, player) {
   }
 
 
+  function showMiniGame() {
+    var miniGame = document.getElementById("mini-game");
+    miniGame.style.display = "flex";
+  }

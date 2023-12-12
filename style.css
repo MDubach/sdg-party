@@ -282,12 +282,12 @@ main {
     cursor: default;
 }
 
-#A3 i:first-child, #E5 i:first-child{
+#A3 i:first-of-type, #E5 i:first-of-type{
     left: 50%;
     transform: translate(-110%, -50%);
 }
 
-#A3 i:last-child, #E5 i:last-child{
+#A3 i:last-of-type, #E5 i:last-of-type{
     right: 50%;
     transform: translate(110%, -50%);
 }
@@ -392,3 +392,8 @@ main {
   #cube-animation.show4 { transform: translateZ( -100px ) rotateX(   90deg ); }
   #cube-animation.show5 { transform: translateZ( -100px ) rotateY(   90deg ); }
   #cube-animation.show6 { transform: translateZ( -100px ) rotateX( -180deg ); }
+
+
+  #mini-game {
+    display: none;
+  }
