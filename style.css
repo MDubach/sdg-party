@@ -385,9 +385,8 @@ main {
     width:198px;
     height:198px;
     position:absolute;
-    background-image: url(img/Dice.png);
+    background-image: url(img/Dice2.png);
     background-repeat:no-repeat;
-    opacity:.9;
   }
   
   .front-cube { transform: rotateY(   0deg ) translateZ( 100px ); background-position: -12px -12px; }
