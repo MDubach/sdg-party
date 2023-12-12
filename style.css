@@ -267,7 +267,17 @@ main {
     height: 100%;
     color: white;
     border-radius: 20px;
-    font-size: 20px;
+    font-weight: 800;
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+
+.points-player{
+    font-size: 38px !important;
 }
 
 #A3, #E5{
@@ -282,12 +292,12 @@ main {
     cursor: default;
 }
 
-#A3 i:first-child, #E5 i:first-child{
+#A3 i:first-of-type, #E5 i:first-of-type{
     left: 50%;
     transform: translate(-110%, -50%);
 }
 
-#A3 i:last-child, #E5 i:last-child{
+#A3 i:last-of-type, #E5 i:last-of-type{
     right: 50%;
     transform: translate(110%, -50%);
 }
