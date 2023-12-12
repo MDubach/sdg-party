@@ -11,10 +11,10 @@ var diceNumber = 1;
 var isGameOver = false;
 
 var players = [
-    { color: "red", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "blue", number: 2, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "green", number: 3, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "magenta", number: 4, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 }
+    { color: "var(--red)", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
+    { color: "var(--blueroyal)", number: 2, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
+    { color: "var(--greenlime)", number: 3, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
+    { color: "var(--magenta)", number: 4, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 }
 ];
 
 var pointsFieldsArray = [
@@ -570,7 +570,8 @@ var diceContainer = document.getElementById("dice-container");
 var dice = document.getElementById("cube-animation");
 var infoPlayerTurnText = document.getElementById("info-player-turn-text");
 var qaContainer = document.getElementById("qa-container");
-var selectDirectionContainer = document.getElementById("select-direction-container");
+var selectDirectionContainerA3 = document.getElementById("select-direction-container-a3");
+var selectDirectionContainerE5 = document.getElementById("select-direction-container-e5");
 var gameoverContainer = document.getElementById("gameover-container");
 
 var playerTurnIndex = 0;
@@ -736,23 +737,23 @@ async function movePlayerPoint(resultDice) {
 
         if (playerPosition == "E5") {
             foregroundContainer.style.display = "flex";
-            selectDirectionContainer.style.display = "flex";
+            selectDirectionContainerE5.style.display = "flex";
 
             await waitOnSelectDirection(playerPosition, player);
 
             foregroundContainer.style.display = "none";
-            selectDirectionContainer.style.display = "none";
+            selectDirectionContainerE5.style.display = "none";
             
         }
 
         if (playerPosition == "A3") {
             foregroundContainer.style.display = "flex";
-            selectDirectionContainer.style.display = "flex";
+            selectDirectionContainerA3.style.display = "flex";
 
             await waitOnSelectDirection(playerPosition, player);
 
             foregroundContainer.style.display = "none";
-            selectDirectionContainer.style.display = "none";
+            selectDirectionContainerA3.style.display = "none";
         }
 
         player.positionInArray++;
@@ -771,6 +772,9 @@ async function movePlayerPoint(resultDice) {
     if (playerTurnIndex >= players.length) {
         playerTurnIndex = 0;
     }
+
+    var diceColorButton = document.getElementById("dice");
+    diceColorButton.style.backgroundColor = players[playerTurnIndex].color;
 
 }
 
@@ -939,12 +943,18 @@ function waitOnAnswer() {
 
 function waitOnSelectDirection(playerPosition, player) {
     return new Promise(resolve => {
-      const leftIcon = document.getElementById("left-direction-icon");
+      const upLeftIcon = document.getElementById("upleft-direction-icon");
       const rightIcon = document.getElementById("right-direction-icon");
+
+      const leftIcon = document.getElementById("left-direction-icon");
+      const downIcon = document.getElementById("down-direction-icon");
+      
   
-      const selectedLeftSide = () => {
-        leftIcon.removeEventListener('click', selectedLeftSide);
-        rightIcon.removeEventListener('click', selectedRightSide);
+      const selectedNewPath = () => {
+        upLeftIcon.removeEventListener('click', selectedNewPath);
+        rightIcon.removeEventListener('click', selectedOldPath);
+        leftIcon.removeEventListener('click', selectedNewPath);
+        downIcon.removeEventListener('click', selectedOldPath);
 
         if (playerPosition == "E5") {
             player.choosenPath = pathShort;
@@ -955,20 +965,20 @@ function waitOnSelectDirection(playerPosition, player) {
         resolve();
       };
 
-      const selectedRightSide = () => {
-        leftIcon.removeEventListener('click', selectedLeftSide);
-        rightIcon.removeEventListener('click', selectedRightSide);
+      const selectedOldPath = () => {
+        upLeftIcon.removeEventListener('click', selectedNewPath);
+        rightIcon.removeEventListener('click', selectedOldPath);
+        leftIcon.removeEventListener('click', selectedNewPath);
+        downIcon.removeEventListener('click', selectedOldPath);
 
         resolve();
       }
 
-      leftIcon.addEventListener('click', selectedLeftSide);
-      rightIcon.addEventListener('click', selectedRightSide);
+      upLeftIcon.addEventListener('click', selectedNewPath);
+      rightIcon.addEventListener('click', selectedOldPath);
+
+      leftIcon.addEventListener('click', selectedNewPath);
+      downIcon.addEventListener('click', selectedOldPath);
+      
     });
-  }
-
-
-  function showMiniGame() {
-    var miniGame = document.getElementById("mini-game");
-    miniGame.style.display = "flex";
   }
