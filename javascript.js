@@ -9,6 +9,7 @@ var fieldWithSDG = "";
 var isAnswerRight = false;
 var diceNumber = 1;
 var isGameOver = false;
+var whichButtonClicked;
 
 var players = [
     { color: "var(--red)", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
@@ -573,6 +574,9 @@ var qaContainer = document.getElementById("qa-container");
 var selectDirectionContainerA3 = document.getElementById("select-direction-container-a3");
 var selectDirectionContainerE5 = document.getElementById("select-direction-container-e5");
 var gameoverContainer = document.getElementById("gameover-container");
+const btnAnswer1 = document.getElementById("btn-answer-1");
+const btnAnswer2 = document.getElementById("btn-answer-2");
+const btnAnswer3 = document.getElementById("btn-answer-3");
 
 var playerTurnIndex = 0;
 var sdgAvailableIndex = 0;
@@ -799,7 +803,9 @@ async function showQuestion() {
         }
 
     } else {
-        alert("leider falsch du husssoooo!!! XD");
+        btnAnswer1.classList.remove("btn-wrong");
+        btnAnswer2.classList.remove("btn-wrong");
+        btnAnswer3.classList.remove("btn-wrong");
     }
 
     if (!isGameOver) {
@@ -816,13 +822,13 @@ function updatePlayerPoints() {
 
     for (var i = 0; i < players.length; i++) {
         if (i == 0) {
-            playerPoints1.innerHTML = `${players[i].sdgCards} Points`;
+            playerPoints1.innerHTML = players[i].sdgCards;
         } else if (i == 1) {
-            playerPoints2.innerHTML = `${players[i].sdgCards} Points`;
+            playerPoints2.innerHTML = players[i].sdgCards;
         } else if (i == 2) {
-            playerPoints3.innerHTML = `${players[i].sdgCards} Points`;
+            playerPoints3.innerHTML = players[i].sdgCards;
         } else {
-            playerPoints4.innerHTML = `${players[i].sdgCards} Points`;
+            playerPoints4.innerHTML = players[i].sdgCards;
         }
     }    
 }
@@ -907,38 +913,53 @@ function waitOnAnswer() {
     questionText.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].question;
 
     return new Promise(resolve => {
-      const btnAnswer1 = document.getElementById("btn-answer-1");
       btnAnswer1.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[0]].answer;
-      const btnAnswer2 = document.getElementById("btn-answer-2");
       btnAnswer2.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[1]].answer;
-      const btnAnswer3 = document.getElementById("btn-answer-3");
       btnAnswer3.innerHTML = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[2]].answer;
   
       const btnAnswer1Func = () => {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
+        whichButtonClicked = btnAnswer1;
         isAnswerRight = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[0]].result;
 
-        resolve();
+        if (!isAnswerRight) {
+            btnAnswer1.classList.add("btn-wrong");
+            setTimeout(resolve, 2000);
+        } else {
+            resolve();
+        }
       };
 
       const btnAnswer2Func = () => {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
+        whichButtonClicked = btnAnswer2;
         isAnswerRight = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[1]].result;
 
-        resolve();
+        if (!isAnswerRight) {
+            btnAnswer2.classList.add("btn-wrong");
+            setTimeout(resolve, 2000);
+        } else {
+            resolve();
+        }
       };
 
       const btnAnswer3Func = () => {
         btnAnswer1.removeEventListener('click', btnAnswer1Func);
         btnAnswer2.removeEventListener('click', btnAnswer2Func);
         btnAnswer3.removeEventListener('click', btnAnswer3Func);
+        whichButtonClicked = btnAnswer3;
         isAnswerRight = sdgArray[sdgAvailableIndex].questions[questionRandomIndex].answers[answerRandomIndex[2]].result;
 
-        resolve();
+        if (!isAnswerRight) {
+            btnAnswer3.classList.add("btn-wrong");
+            setTimeout(resolve, 2000);
+        } else {
+            resolve();
+        }
       };
 
       btnAnswer1.addEventListener('click', btnAnswer1Func);
@@ -958,8 +979,8 @@ function waitOnSelectDirection(playerPosition, player) {
       const selectedNewPath = () => {
         upLeftIcon.removeEventListener('click', selectedNewPath);
         rightIcon.removeEventListener('click', selectedOldPath);
-        leftIcon.removeEventListener('click', selectedNewPath);
-        downIcon.removeEventListener('click', selectedOldPath);
+        leftIcon.removeEventListener('click', selectedOldPath);
+        downIcon.removeEventListener('click', selectedNewPath);
 
         if (playerPosition == "E5") {
             player.choosenPath = pathShort;
@@ -973,8 +994,8 @@ function waitOnSelectDirection(playerPosition, player) {
       const selectedOldPath = () => {
         upLeftIcon.removeEventListener('click', selectedNewPath);
         rightIcon.removeEventListener('click', selectedOldPath);
-        leftIcon.removeEventListener('click', selectedNewPath);
-        downIcon.removeEventListener('click', selectedOldPath);
+        leftIcon.removeEventListener('click', selectedOldPath);
+        downIcon.removeEventListener('click', selectedNewPath);
 
         resolve();
       }
@@ -982,8 +1003,8 @@ function waitOnSelectDirection(playerPosition, player) {
       upLeftIcon.addEventListener('click', selectedNewPath);
       rightIcon.addEventListener('click', selectedOldPath);
 
-      leftIcon.addEventListener('click', selectedNewPath);
-      downIcon.addEventListener('click', selectedOldPath);
+      leftIcon.addEventListener('click', selectedOldPath);
+      downIcon.addEventListener('click', selectedNewPath);
       
     });
   }
