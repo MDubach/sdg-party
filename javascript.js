@@ -612,10 +612,10 @@ function changeNameOfPlayers() {
     for (let i = 0; i < players.length; i++) {
         let playerName = "";
 
-        while (!playerName.trim() || playerName.length > 10) {
-            playerName = customPrompt("Wie lautet der Name von Spieler:in " + (i + 1) + "? (Maximal 10 Zeichen)", "Christianooo Sui ROnaldööööuuuu!");
-            if (playerName.length > 10) {
-                alert('Die Eingabe darf nicht mehr als 10 Zeichen haben. Bitte geben Sie einen kürzeren Wert ein.');
+        while (!playerName.trim() || playerName.length > 15) {
+            playerName = customPrompt("Wie lautet der Name von Spieler:in " + (i + 1) + "? (Maximal 15 Zeichen)", `${players[i].playerName}`);
+            if (playerName.length > 15) {
+                alert('Die Eingabe darf nicht mehr als 15 Zeichen haben. Bitte geben Sie einen kürzeren Wert ein.');
             }
         }
 
@@ -631,8 +631,8 @@ function customPrompt(message, defaultValue) {
 
     var userInput = prompt(message, sanitizedDefault.innerText);
 
-    if (userInput && (userInput.includes('<') || userInput.length > 10)) {
-        alert('Ungültige Eingabe. Bitte geben Sie einen gültigen Wert ein. (Max. 10 Zeichen)');
+    if (userInput && (userInput.includes('<') || userInput.length > 15)) {
+        alert('Ungültige Eingabe. Bitte geben Sie einen gültigen Wert ein. (Max. 15 Zeichen)');
         return customPrompt(message, defaultValue);
     }
 
