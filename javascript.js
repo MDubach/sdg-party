@@ -12,17 +12,17 @@ var isGameOver = false;
 var whichButtonClicked;
 
 var players = [
-    { color: "var(--red)", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "var(--blueroyal)", number: 2, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "var(--greenlime)", number: 3, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 },
-    { color: "var(--magenta)", number: 4, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0 }
+    { color: "var(--red)", number: 1, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0, playerName: "Spieler:in 1" },
+    { color: "var(--blueroyal)", number: 2, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0, playerName: "Spieler:in 2" },
+    { color: "var(--greenlime)", number: 3, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0, playerName: "Spieler:in 3" },
+    { color: "var(--magenta)", number: 4, position: "F1", positionInArray: 0, choosenPath: pathBig, sdgCards: 0, playerName: "Spieler:in 4" }
 ];
 
 var pointsFieldsArray = [
-    { classNameForDiv: "player-points red", classNameForP: "points-player", textContent: "Spieler:in 1", id: "points-player-1", pointNumber: "0", appendChildId: "D2" },
-    { classNameForDiv: "player-points blue", classNameForP: "points-player", textContent: "Spieler:in 2", id: "points-player-2", pointNumber: "0", appendChildId: "D2" },
-    { classNameForDiv: "player-points green", classNameForP: "points-player", textContent: "Spieler:in 3", id: "points-player-3", pointNumber: "0", appendChildId: "D3" },
-    { classNameForDiv: "player-points magenta", classNameForP: "points-player", textContent: "Spieler:in 4", id: "points-player-4", pointNumber: "0", appendChildId: "D3" }
+    { classNameForDiv: "player-points red", classNameForP: "points-player", id: "points-player-1", pointNumber: "0", appendChildId: "D2" },
+    { classNameForDiv: "player-points blue", classNameForP: "points-player", id: "points-player-2", pointNumber: "0", appendChildId: "D2" },
+    { classNameForDiv: "player-points green", classNameForP: "points-player", id: "points-player-3", pointNumber: "0", appendChildId: "D3" },
+    { classNameForDiv: "player-points magenta", classNameForP: "points-player", id: "points-player-4", pointNumber: "0", appendChildId: "D3" }
 ];
 
 var sdgArray = [
@@ -595,6 +595,8 @@ function startGame(numberOfPlayers) {
     // set playerNumber
     playerNumber = numberOfPlayers;
 
+    changeNameOfPlayers();
+
     // create all player points on map
     setAllPlayerPoints();
 
@@ -605,6 +607,38 @@ function startGame(numberOfPlayers) {
     foregroundContainer.style.display = "none";
     playerContainer.style.display = "none";
 }
+
+function changeNameOfPlayers() {
+    for (let i = 0; i < players.length; i++) {
+        let playerName = "";
+
+        while (!playerName.trim() || playerName.length > 10) {
+            playerName = customPrompt("Wie lautet der Name von Spieler:in " + (i + 1) + "? (Maximal 10 Zeichen)", "Christianooo Sui ROnaldööööuuuu!");
+            if (playerName.length > 10) {
+                alert('Die Eingabe darf nicht mehr als 10 Zeichen haben. Bitte geben Sie einen kürzeren Wert ein.');
+            }
+        }
+
+        players[i].playerName = playerName;
+
+        console.log("Player " + (i + 1) + "'s name:", playerName);
+    }
+}
+
+function customPrompt(message, defaultValue) {
+    var sanitizedDefault = document.createElement('div');
+    sanitizedDefault.innerText = defaultValue;
+
+    var userInput = prompt(message, sanitizedDefault.innerText);
+
+    if (userInput && (userInput.includes('<') || userInput.length > 10)) {
+        alert('Ungültige Eingabe. Bitte geben Sie einen gültigen Wert ein. (Max. 10 Zeichen)');
+        return customPrompt(message, defaultValue);
+    }
+
+    return userInput;
+}
+
 
 function setAllPlayerPoints() {
 
@@ -626,12 +660,13 @@ function generatePlayerPointsAsDiv(number, fieldId) {
 
 function generatePointsFields(number) {
     infosForHtmlElements = pointsFieldsArray[number-1];
+    playerInfos = players[number-1];
     var divToAppendChild = document.getElementById(infosForHtmlElements.appendChildId);
     var pointsFieldDiv = document.createElement("div");
     pointsFieldDiv.className = infosForHtmlElements.classNameForDiv;
 
     var playerName = document.createElement("h4");
-    playerName.textContent = infosForHtmlElements.textContent;
+    playerName.textContent = playerInfos.playerName;
 
     var playerPoints = document.createElement("p");
     playerPoints.id = infosForHtmlElements.id;
@@ -673,7 +708,6 @@ function setSdgGoalOnMap() {
     fieldWithSDG = sdgAvailableField;
 
     var fieldToPlaceSDG = document.getElementById(sdgAvailableField);
-    console.log(sdgArray[sdgAvailableIndex].color);
     fieldToPlaceSDG.style.backgroundColor = sdgArray[sdgAvailableIndex].color;
     fieldToPlaceSDG.style.backgroundImage = sdgArray[sdgAvailableIndex].url;
 
@@ -683,9 +717,6 @@ function setSdgGoalOnMap() {
     iElements.forEach(function (iElement) {
         iElement.style.color = 'transparent';
     });
-    console.log(divChangeArrowLook);
-
-    console.log(sdgAvailableField);
 }
 
 async function rollDice() {
@@ -723,7 +754,8 @@ function showDiceContainer() {
     foregroundContainer.style.display = "flex";
     diceContainer.style.display = "flex";
     buttonRollDice.style.display = "flex";
-    infoPlayerTurnText.innerHTML = `Spieler:in ${playerTurnIndex + 1} ist dran!`;
+    playerInfos = players[playerTurnIndex];
+    infoPlayerTurnText.innerHTML = `${playerInfos.playerName} ist dran!`;
 }
 
 async function movePlayerPoint(resultDice) {
@@ -862,7 +894,8 @@ function checkWhichPlayerWon() {
     if (tiedPlayers.length > 1) {
         gameoverText.innerHTML = `Es gab ein Unentschieden!`;
     } else {
-        gameoverText.innerHTML = `Spieler:in ${playerWithMostSdgCards.number} hat gewonnen!`;
+
+        gameoverText.innerHTML = `${playerWithMostSdgCards.playerName} hat gewonnen!`;
     }
 
     
